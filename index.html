@@ -3,156 +3,228 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Veru365 Chat Widget — Live Demo</title>
+  <title>Veru365 for Partners — White-Label Platform &amp; Integration Guide</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      color: #1a1a2e;
-      background: #f7f8fc;
-      line-height: 1.6;
+      color: #1a1a2e; background: #f7f8fc; line-height: 1.65;
     }
     .hero {
       background: linear-gradient(135deg, #1e1b4b 0%, #4338ca 100%);
-      color: #fff;
-      padding: 72px 24px 64px;
-      text-align: center;
+      color: #fff; padding: 72px 24px 60px; text-align: center;
     }
     .hero .badge {
-      display: inline-block;
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.3);
-      border-radius: 999px;
-      padding: 6px 16px;
-      font-size: 13px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      margin-bottom: 20px;
+      display: inline-block; background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3); border-radius: 999px;
+      padding: 6px 16px; font-size: 13px; letter-spacing: 0.5px;
+      text-transform: uppercase; margin-bottom: 20px;
     }
-    .hero h1 { font-size: 40px; font-weight: 700; max-width: 760px; margin: 0 auto 16px; line-height: 1.2; }
-    .hero p { font-size: 19px; max-width: 640px; margin: 0 auto; opacity: 0.9; }
-    .section { max-width: 960px; margin: 0 auto; padding: 56px 24px; }
-    .section h2 { font-size: 26px; margin-bottom: 8px; }
-    .section > p.sub { color: #555; margin-bottom: 32px; font-size: 16px; }
+    .hero h1 { font-size: 38px; font-weight: 700; max-width: 800px; margin: 0 auto 16px; line-height: 1.2; }
+    .hero p { font-size: 19px; max-width: 680px; margin: 0 auto; opacity: 0.92; }
+    .section { max-width: 980px; margin: 0 auto; padding: 52px 24px 8px; }
+    .section h2 { font-size: 26px; margin-bottom: 6px; }
+    .section > p.sub { color: #555; margin-bottom: 28px; font-size: 16px; max-width: 780px; }
+    .kicker { color: #4338ca; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
     .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
     .card {
-      background: #fff;
-      border: 1px solid #e5e7eb;
-      border-radius: 14px;
-      padding: 28px;
-      text-decoration: none;
-      color: inherit;
-      display: block;
+      background: #fff; border: 1px solid #e5e7eb; border-radius: 14px;
+      padding: 26px; text-decoration: none; color: inherit; display: block;
       transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
-    .card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(67,56,202,0.14); }
-    .card .icon { font-size: 30px; margin-bottom: 12px; }
-    .card h3 { font-size: 18px; margin-bottom: 6px; }
-    .card p { font-size: 14.5px; color: #555; margin-bottom: 14px; }
+    a.card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(67,56,202,0.14); }
+    .card .icon { font-size: 28px; margin-bottom: 10px; }
+    .card h3 { font-size: 17.5px; margin-bottom: 6px; }
+    .card p { font-size: 14.5px; color: #555; margin-bottom: 12px; }
     .card .cta { color: #4338ca; font-weight: 600; font-size: 14.5px; }
-    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
-    .step { background: #fff; border: 1px solid #e5e7eb; border-radius: 14px; padding: 24px; }
-    .step .num {
-      width: 32px; height: 32px; border-radius: 50%;
-      background: #4338ca; color: #fff;
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 700; margin-bottom: 12px; font-size: 15px;
+    .card .tag {
+      display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: 0.5px;
+      text-transform: uppercase; border-radius: 999px; padding: 3px 10px; margin-bottom: 12px;
     }
-    .step h3 { font-size: 16px; margin-bottom: 4px; }
-    .step p { font-size: 14px; color: #555; }
-    .snippet {
-      background: #1e1b4b; color: #c7d2fe;
-      border-radius: 10px; padding: 16px 20px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: 13px; overflow-x: auto; margin-top: 16px;
-      white-space: nowrap;
+    .tag.live { background: #dcfce7; color: #15803d; }
+    .tag.api { background: #e0e7ff; color: #4338ca; }
+    .step-block { background: #fff; border: 1px solid #e5e7eb; border-radius: 14px; padding: 26px 28px; margin-bottom: 18px; }
+    .step-block h3 { font-size: 17px; margin-bottom: 4px; }
+    .step-block h3 .n { color: #4338ca; margin-right: 8px; }
+    .step-block p { font-size: 14.5px; color: #555; }
+    pre {
+      background: #1e1b4b; color: #c7d2fe; border-radius: 10px;
+      padding: 14px 18px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12.5px; overflow-x: auto; margin-top: 12px; line-height: 1.5;
     }
+    pre .c { color: #818cf8; }
     .try {
-      background: #eef2ff;
-      border: 1px solid #c7d2fe;
-      border-radius: 14px;
-      padding: 24px 28px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
+      background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 14px;
+      padding: 22px 26px; display: flex; align-items: center; gap: 16px; margin-top: 8px;
     }
-    .try .bubble-hint { font-size: 28px; }
-    .try p { font-size: 15.5px; color: #3730a3; }
-    footer { text-align: center; padding: 32px 24px 48px; color: #888; font-size: 13.5px; }
-    @media (max-width: 600px) { .hero h1 { font-size: 30px; } }
+    .try .bubble-hint { font-size: 26px; }
+    .try p { font-size: 15px; color: #3730a3; }
+    .roadmap {
+      background: #fffbeb; border: 1px solid #fde68a; border-radius: 14px; padding: 22px 26px;
+    }
+    .roadmap h3 { font-size: 16px; margin-bottom: 8px; color: #92400e; }
+    .roadmap ul { margin-left: 18px; color: #78350f; font-size: 14.5px; }
+    .roadmap li { margin-bottom: 4px; }
+    footer { text-align: center; padding: 40px 24px 48px; color: #888; font-size: 13.5px; }
+    @media (max-width: 600px) { .hero h1 { font-size: 29px; } }
   </style>
 </head>
 <body>
 
   <div class="hero">
-    <div class="badge">Live demo</div>
-    <h1>Your clients' AI financial assistant, on any website they own</h1>
-    <p>One line of code puts a fully branded AI chat assistant on a client's
-       main website and every marketing landing page they run. Same assistant,
-       their brand, everywhere their customers land.</p>
+    <div class="badge">Partner preview</div>
+    <h1>A white-label AI financial-planning platform you can deploy for every client you serve</h1>
+    <p>Veru365 is a complete advisor platform — AI planning assistant, financial statements,
+       retirement projections, portfolio tools, document vault, scheduling, CRM sync — that runs
+       under <em>your client's</em> brand. Provision it per client through an API, and put the
+       chat assistant on any website or landing page with one line of code.</p>
   </div>
 
   <div class="section">
-    <h2>See it live</h2>
-    <p class="sub">Below is a fictional advisory firm, “Acme Wealth.” It has a main website and two
-       separate marketing landing pages. All three carry the same chat widget — click any of them,
-       then click the chat bubble in the bottom-right corner and ask a real financial question.</p>
+    <div class="kicker">Live right now — click anything</div>
+    <h2>One fictional client, "Acme Wealth," three of their pages</h2>
+    <p class="sub">This is the exact question you asked: the same chat widget running on a client's
+       main website <strong>and</strong> multiple separate campaign landing pages. These are real,
+       live pages on a third-party domain — open one, click the chat bubble bottom-right, and ask a
+       genuine question like “how much should I be saving for retirement?” The answers stream from
+       our real planning assistant.</p>
     <div class="cards">
       <a class="card" href="acme-wealth/index.html">
+        <span class="tag live">Live</span>
         <div class="icon">🏠</div>
-        <h3>Main website</h3>
-        <p>The firm's homepage — the widget lives alongside their normal site content.</p>
-        <span class="cta">Open the main site →</span>
+        <h3>Client's main website</h3>
+        <p>The firm homepage, widget installed alongside normal site content.</p>
+        <span class="cta">Open →</span>
       </a>
       <a class="card" href="acme-wealth/retirement-landing.html">
+        <span class="tag live">Live</span>
         <div class="icon">🌅</div>
-        <h3>Landing page #1 — Retirement campaign</h3>
-        <p>A separate marketing page for a retirement-planning campaign. Same widget, one line of code.</p>
-        <span class="cta">Open the retirement page →</span>
+        <h3>Retirement campaign page</h3>
+        <p>A standalone marketing funnel page. Same widget, same one-line install.</p>
+        <span class="cta">Open →</span>
       </a>
       <a class="card" href="acme-wealth/tax-landing.html">
+        <span class="tag live">Live</span>
         <div class="icon">🧾</div>
-        <h3>Landing page #2 — Tax season campaign</h3>
-        <p>Another standalone campaign page. The assistant answers there too — no extra setup.</p>
-        <span class="cta">Open the tax page →</span>
+        <h3>Tax season campaign page</h3>
+        <p>Another separate landing page. No extra setup per page — ever.</p>
+        <span class="cta">Open →</span>
       </a>
     </div>
-  </div>
-
-  <div class="section" style="padding-top: 0;">
-    <div class="try">
+    <div class="try" style="margin-top: 20px;">
       <div class="bubble-hint">💬</div>
-      <p><strong>Or try it right here.</strong> This very page has the widget installed —
-         click the chat bubble in the bottom-right corner and ask something like
-         “How much should I be saving for retirement?”</p>
+      <p><strong>Or try it without leaving this page</strong> — the widget is installed right here.
+         Click the bubble in the corner and ask it something a real client would ask.</p>
     </div>
   </div>
 
-  <div class="section" style="padding-top: 0;">
-    <h2>How it works</h2>
-    <p class="sub">No app to install, no IT project. It's the same way analytics tags or live-chat tools get added to a site.</p>
-    <div class="steps">
-      <div class="step">
-        <div class="num">1</div>
-        <h3>Copy one line of code</h3>
-        <p>Each client gets a snippet tied to their own branding — logo, colors, firm name.</p>
+  <div class="section">
+    <div class="kicker">The part your clients never see</div>
+    <h2>Behind the widget: a full branded portal per client</h2>
+    <p class="sub">The chat bubble is the front door. Every client org gets the complete platform under
+       their own logo, colors, and product name: the AI assistant with real financial-planning tools
+       (Monte Carlo retirement projections, stress tests, what-if modeling), personal financial
+       statements that fill themselves from conversation or uploaded documents, portfolio analysis and
+       stock research, a compliant document vault, appointment scheduling, and automatic activity sync
+       into the CRMs advisors already use (Wealthbox, Salesforce, RingCentral, Microsoft 365) — with a
+       regulator-ready audit trail underneath.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="icon">🎨</div>
+        <h3>Their brand, everywhere</h3>
+        <p>Logo, colors, favicon, and even the product name are per-org settings — the browser tab
+           says the client's name, not ours. Rebranding an org is one API call or two minutes in the
+           admin console.</p>
       </div>
-      <div class="step">
-        <div class="num">2</div>
-        <h3>Paste it on any page</h3>
-        <p>Main website, landing pages, campaign microsites — anywhere they can edit HTML.</p>
+      <div class="card">
+        <div class="icon">🧠</div>
+        <h3>A real planning assistant</h3>
+        <p>Not a FAQ bot — it runs retirement projections, updates financial statements, analyzes
+           portfolios, and hands off to the human advisor with an AI-written summary.</p>
       </div>
-      <div class="step">
-        <div class="num">3</div>
-        <h3>Their assistant is live</h3>
-        <p>Visitors chat with an AI financial assistant wearing the client's brand, on every page.</p>
+      <div class="card">
+        <div class="icon">🛡️</div>
+        <h3>Built for this industry</h3>
+        <p>Tenant isolation at the database layer, WORM message retention, audit logging, GDPR
+           tooling, and per-client feature switches (turn Plaid, vault, portfolio, or scheduling
+           on/off per org).</p>
       </div>
     </div>
-    <div class="snippet">&lt;script src="https://…/widget.js" data-org="acme-wealth" defer&gt;&lt;/script&gt;</div>
+  </div>
+
+  <div class="section">
+    <div class="kicker">For your production team</div>
+    <h2>Onboard a client in four API calls</h2>
+    <p class="sub">These are real endpoints from our live API, not a roadmap. During a pilot we provision
+       partner credentials and run this alongside your team; the same flow also exists as point-and-click
+       in our admin console if you'd rather not touch an API at all.</p>
+
+    <div class="step-block">
+      <h3><span class="n">1</span>Create the client's organization</h3>
+      <p>One call provisions an isolated tenant, optionally on a trial clock.</p>
+      <pre>curl -X POST "https://api.veru365.com/api/platform-admin/orgs?name=Acme%20Wealth&amp;owner_user_id=1042&amp;trial_days=30" \
+  -H "Authorization: Bearer $PARTNER_TOKEN"</pre>
+    </div>
+
+    <div class="step-block">
+      <h3><span class="n">2</span>Apply the client's branding</h3>
+      <p>Logo and favicon upload as files; colors and product name as JSON. Instantly live across
+         the portal, the widget, and the login page.</p>
+      <pre>curl -X PATCH "https://api.veru365.com/api/orgs/47/branding" \
+  -H "Authorization: Bearer $ORG_OWNER_TOKEN" \
+  -d '{"app_name": "Acme Wealth", "primary_color": "#0E7C5A", "secondary_color": "#0A3D2E"}'
+
+curl -X POST "https://api.veru365.com/api/orgs/47/branding/logo" \
+  -H "Authorization: Bearer $ORG_OWNER_TOKEN" -F "file=@acme-logo.png"</pre>
+    </div>
+
+    <div class="step-block">
+      <h3><span class="n">3</span>Choose what this client gets</h3>
+      <p>Feature switches per org — bank connections, document vault, portfolio tools, scheduling —
+         so you can package tiers however you sell them.</p>
+      <pre>curl -X PATCH "https://api.veru365.com/api/platform-admin/orgs/47/features" \
+  -H "Authorization: Bearer $PARTNER_TOKEN" \
+  -d '{"enable_plaid": true, "enable_file_vault": true, "enable_scheduling": true}'</pre>
+    </div>
+
+    <div class="step-block">
+      <h3><span class="n">4</span>Invite the advisor, drop in the widget</h3>
+      <p>The invitation returns a ready-to-send link; the widget is one line on any page they own.</p>
+      <pre>curl -X POST "https://api.veru365.com/api/orgs/47/invitations" \
+  -H "Authorization: Bearer $ORG_OWNER_TOKEN" \
+  -d '{"email": "advisor@acmewealth.com", "role": "owner", "first_name": "Jordan"}'
+
+<span class="c">&lt;!-- then, on every client web page: --&gt;</span>
+&lt;script src="https://app.veru365.com/widget.js" data-org="acme-wealth" defer&gt;&lt;/script&gt;</pre>
+    </div>
+
+    <div class="step-block">
+      <h3><span class="n">+</span>Events out, leads in</h3>
+      <p>HMAC-signed webhooks push events to your systems, and every client gets a public,
+         rate-limited lead-capture endpoint and bookable public advisor page — so widget conversations
+         turn into appointments in the advisor's calendar and records in their CRM.</p>
+      <pre>curl -X POST "https://api.veru365.com/api/orgs/47/webhooks/endpoints" \
+  -H "Authorization: Bearer $ORG_OWNER_TOKEN" \
+  -d '{"url": "https://hooks.yourplatform.com/veru365", "event_filter": "lead.*"}'</pre>
+    </div>
+
+    <p class="sub" style="margin-top: 4px;">The full REST API ships with a complete OpenAPI 3 schema —
+       your team can generate typed clients in any language.</p>
+  </div>
+
+  <div class="section">
+    <div class="roadmap">
+      <h3>Being transparent: what's pilot-stage vs. shipped</h3>
+      <ul>
+        <li><strong>Shipped:</strong> everything demonstrated and documented above — multi-tenant orgs, branding API, feature switches, invitations, webhooks, lead capture, the embeddable widget.</li>
+        <li><strong>Provisioned with you during pilot:</strong> partner API credentials (today we issue them per-partner rather than self-serve) and per-domain widget allowlisting for your clients' sites.</li>
+        <li><strong>On the partner roadmap:</strong> self-serve API keys, bulk client onboarding, and per-client chat context on the public widget (today the public widget demos the assistant; signed-in client conversations happen in the portal).</li>
+      </ul>
+    </div>
   </div>
 
   <footer>
-    Demo environment · Acme Wealth is a fictional firm · Powered by Veru365
+    Demo environment · “Acme Wealth” is a fictional firm · Veru365 — white-label financial planning, powered by AI
   </footer>
 
   <script src="https://ihf-frontend-staging-mr64uhwn4a-uc.a.run.app/widget.js" data-org="veru365" data-base="https://ihf-frontend-staging-mr64uhwn4a-uc.a.run.app" defer></script>
