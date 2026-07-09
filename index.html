@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Veru365 Chat Widget — Live Demo</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: #1a1a2e;
+      background: #f7f8fc;
+      line-height: 1.6;
+    }
+    .hero {
+      background: linear-gradient(135deg, #1e1b4b 0%, #4338ca 100%);
+      color: #fff;
+      padding: 72px 24px 64px;
+      text-align: center;
+    }
+    .hero .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 999px;
+      padding: 6px 16px;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero h1 { font-size: 40px; font-weight: 700; max-width: 760px; margin: 0 auto 16px; line-height: 1.2; }
+    .hero p { font-size: 19px; max-width: 640px; margin: 0 auto; opacity: 0.9; }
+    .section { max-width: 960px; margin: 0 auto; padding: 56px 24px; }
+    .section h2 { font-size: 26px; margin-bottom: 8px; }
+    .section > p.sub { color: #555; margin-bottom: 32px; font-size: 16px; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    .card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 28px;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(67,56,202,0.14); }
+    .card .icon { font-size: 30px; margin-bottom: 12px; }
+    .card h3 { font-size: 18px; margin-bottom: 6px; }
+    .card p { font-size: 14.5px; color: #555; margin-bottom: 14px; }
+    .card .cta { color: #4338ca; font-weight: 600; font-size: 14.5px; }
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+    .step { background: #fff; border: 1px solid #e5e7eb; border-radius: 14px; padding: 24px; }
+    .step .num {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: #4338ca; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; margin-bottom: 12px; font-size: 15px;
+    }
+    .step h3 { font-size: 16px; margin-bottom: 4px; }
+    .step p { font-size: 14px; color: #555; }
+    .snippet {
+      background: #1e1b4b; color: #c7d2fe;
+      border-radius: 10px; padding: 16px 20px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 13px; overflow-x: auto; margin-top: 16px;
+      white-space: nowrap;
+    }
+    .try {
+      background: #eef2ff;
+      border: 1px solid #c7d2fe;
+      border-radius: 14px;
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .try .bubble-hint { font-size: 28px; }
+    .try p { font-size: 15.5px; color: #3730a3; }
+    footer { text-align: center; padding: 32px 24px 48px; color: #888; font-size: 13.5px; }
+    @media (max-width: 600px) { .hero h1 { font-size: 30px; } }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="badge">Live demo</div>
+    <h1>Your clients' AI financial assistant, on any website they own</h1>
+    <p>One line of code puts a fully branded AI chat assistant on a client's
+       main website and every marketing landing page they run. Same assistant,
+       their brand, everywhere their customers land.</p>
+  </div>
+
+  <div class="section">
+    <h2>See it live</h2>
+    <p class="sub">Below is a fictional advisory firm, “Acme Wealth.” It has a main website and two
+       separate marketing landing pages. All three carry the same chat widget — click any of them,
+       then click the chat bubble in the bottom-right corner and ask a real financial question.</p>
+    <div class="cards">
+      <a class="card" href="acme-wealth/index.html">
+        <div class="icon">🏠</div>
+        <h3>Main website</h3>
+        <p>The firm's homepage — the widget lives alongside their normal site content.</p>
+        <span class="cta">Open the main site →</span>
+      </a>
+      <a class="card" href="acme-wealth/retirement-landing.html">
+        <div class="icon">🌅</div>
+        <h3>Landing page #1 — Retirement campaign</h3>
+        <p>A separate marketing page for a retirement-planning campaign. Same widget, one line of code.</p>
+        <span class="cta">Open the retirement page →</span>
+      </a>
+      <a class="card" href="acme-wealth/tax-landing.html">
+        <div class="icon">🧾</div>
+        <h3>Landing page #2 — Tax season campaign</h3>
+        <p>Another standalone campaign page. The assistant answers there too — no extra setup.</p>
+        <span class="cta">Open the tax page →</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="section" style="padding-top: 0;">
+    <div class="try">
+      <div class="bubble-hint">💬</div>
+      <p><strong>Or try it right here.</strong> This very page has the widget installed —
+         click the chat bubble in the bottom-right corner and ask something like
+         “How much should I be saving for retirement?”</p>
+    </div>
+  </div>
+
+  <div class="section" style="padding-top: 0;">
+    <h2>How it works</h2>
+    <p class="sub">No app to install, no IT project. It's the same way analytics tags or live-chat tools get added to a site.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Copy one line of code</h3>
+        <p>Each client gets a snippet tied to their own branding — logo, colors, firm name.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Paste it on any page</h3>
+        <p>Main website, landing pages, campaign microsites — anywhere they can edit HTML.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Their assistant is live</h3>
+        <p>Visitors chat with an AI financial assistant wearing the client's brand, on every page.</p>
+      </div>
+    </div>
+    <div class="snippet">&lt;script src="https://…/widget.js" data-org="acme-wealth" defer&gt;&lt;/script&gt;</div>
+  </div>
+
+  <footer>
+    Demo environment · Acme Wealth is a fictional firm · Powered by Veru365
+  </footer>
+
+  <script src="https://ihf-frontend-staging-mr64uhwn4a-uc.a.run.app/widget.js" data-org="veru365" data-base="https://ihf-frontend-staging-mr64uhwn4a-uc.a.run.app" defer></script>
+</body>
+</html>
