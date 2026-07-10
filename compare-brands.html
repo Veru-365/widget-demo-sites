@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Two Brands, One Platform — Veru365 Live Comparison</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: #f7f8fc; color: #1a1a2e; }
+    .top { text-align: center; padding: 36px 24px 8px; }
+    .top a { color: #4338ca; text-decoration: none; font-weight: 600; font-size: 14px; }
+    .top h1 { font-size: 26px; margin: 10px 0 6px; }
+    .top p { color: #555; font-size: 15.5px; max-width: 640px; margin: 0 auto; }
+    .cols { display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; padding: 28px 24px 48px; }
+    .col { text-align: center; }
+    .col h2 { font-size: 16.5px; margin-bottom: 10px; }
+    .col .chip { display: inline-block; font-family: ui-monospace, Menlo, monospace; font-size: 11.5px; background: #1e1b4b; color: #c7d2fe; border-radius: 8px; padding: 6px 12px; margin-bottom: 12px; }
+    iframe { width: min(420px, 92vw); height: 620px; border: 1px solid #e5e7eb; border-radius: 16px; box-shadow: 0 12px 28px rgba(0,0,0,0.08); background: #fff; }
+    footer { text-align: center; padding: 8px 24px 40px; color: #888; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <div class="top">
+    <a href="index.html">← Overview</a>
+    <h1>Two clients. Two brands. One attribute changed.</h1>
+    <p>Both assistants below are the live platform on our staging environment. The only difference
+       between them is the <code>data-org</code> attribute in the install snippet — each pulls its own
+       firm's live branding.</p>
+  </div>
+  <div class="cols">
+    <div class="col">
+      <h2>Acme Wealth — client 1</h2>
+      <div class="chip">data-org="veru365"</div><br>
+      <iframe src="https://ihf-frontend-staging-mr64uhwn4a-uc.a.run.app/widget/chat?org=veru365" title="Acme Wealth assistant"></iframe>
+    </div>
+    <div class="col">
+      <h2>Summit Planning — client 2</h2>
+      <div class="chip">data-org="summit-planning"</div><br>
+      <iframe src="https://ihf-frontend-staging-mr64uhwn4a-uc.a.run.app/widget/chat?org=summit-planning" title="Summit Planning assistant"></iframe>
+    </div>
+  </div>
+  <footer>Demo environment · both firms are fictional · Veru365 partner preview</footer>
+</body>
+</html>
