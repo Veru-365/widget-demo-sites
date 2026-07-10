@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Veru365 for Partners — FAQ, Pricing Model &amp; Pilot Path</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: #1a1a2e; background: #f7f8fc; line-height: 1.65;
+    }
+    .topnav {
+      background: #1e1b4b; padding: 12px 24px; display: flex; align-items: center; gap: 18px;
+    }
+    .topnav a { color: #c7d2fe; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .topnav a:hover { color: #fff; }
+    .topnav .brand { color: rgba(255,255,255,0.55); font-size: 13px; margin-left: auto; letter-spacing: 0.5px; }
+    .hero {
+      background: linear-gradient(135deg, #1e1b4b 0%, #4338ca 100%);
+      color: #fff; padding: 60px 24px 52px; text-align: center;
+    }
+    .hero .badge {
+      display: inline-block; background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3); border-radius: 999px;
+      padding: 6px 16px; font-size: 13px; letter-spacing: 0.5px;
+      text-transform: uppercase; margin-bottom: 20px;
+    }
+    .hero h1 { font-size: 34px; font-weight: 700; max-width: 800px; margin: 0 auto 16px; line-height: 1.2; }
+    .hero p { font-size: 18px; max-width: 680px; margin: 0 auto; opacity: 0.92; }
+    .section { max-width: 980px; margin: 0 auto; padding: 52px 24px 8px; }
+    .section h2 { font-size: 26px; margin-bottom: 6px; }
+    .section > p.sub { color: #555; margin-bottom: 28px; font-size: 16px; max-width: 780px; }
+    .kicker { color: #4338ca; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+    .card, .faq-block {
+      background: #fff; border: 1px solid #e5e7eb; border-radius: 14px;
+      padding: 26px 28px; margin-bottom: 18px;
+    }
+    .faq-block h3 { font-size: 17.5px; margin-bottom: 8px; }
+    .faq-block p { font-size: 15px; color: #444; margin-bottom: 10px; }
+    .faq-block p:last-child { margin-bottom: 0; }
+    .faq-block ul { margin: 4px 0 10px 20px; color: #444; font-size: 15px; }
+    .faq-block li { margin-bottom: 4px; }
+    .tag {
+      display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: 0.5px;
+      text-transform: uppercase; border-radius: 999px; padding: 3px 10px; margin-right: 6px;
+    }
+    .tag.live { background: #dcfce7; color: #15803d; }
+    .tag.pilot { background: #e0e7ff; color: #4338ca; }
+    .tag.roadmap { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
+    pre {
+      background: #1e1b4b; color: #c7d2fe; border-radius: 10px;
+      padding: 14px 18px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12.5px; overflow-x: auto; margin-top: 12px; line-height: 1.5;
+    }
+    a.inline { color: #4338ca; font-weight: 600; text-decoration: none; }
+    a.inline:hover { text-decoration: underline; }
+
+    /* Reseller model diagram */
+    .chain { display: flex; align-items: stretch; gap: 0; flex-wrap: wrap; margin-bottom: 10px; }
+    .chain .node {
+      background: #fff; border: 1px solid #e5e7eb; border-radius: 14px;
+      padding: 20px 22px; flex: 1 1 200px; min-width: 200px;
+    }
+    .chain .node.you { border-color: #4338ca; box-shadow: 0 0 0 3px rgba(67,56,202,0.12); }
+    .chain .node .who { font-weight: 700; font-size: 15.5px; margin-bottom: 4px; }
+    .chain .node .role { font-size: 13.5px; color: #555; }
+    .chain .arrow {
+      display: flex; align-items: center; justify-content: center;
+      color: #4338ca; font-size: 22px; font-weight: 700; padding: 0 10px; min-width: 40px;
+    }
+    @media (max-width: 760px) {
+      .chain { flex-direction: column; }
+      .chain .arrow { transform: rotate(90deg); padding: 6px 0; min-height: 34px; }
+    }
+
+    /* Timeline */
+    .step-block { background: #fff; border: 1px solid #e5e7eb; border-radius: 14px; padding: 24px 28px; margin-bottom: 16px; }
+    .step-block h3 { font-size: 16.5px; margin-bottom: 4px; }
+    .step-block h3 .n { color: #4338ca; margin-right: 8px; }
+    .step-block p { font-size: 14.5px; color: #555; }
+
+    /* Status table */
+    .table-wrap { overflow-x: auto; background: #fff; border: 1px solid #e5e7eb; border-radius: 14px; }
+    table { border-collapse: collapse; width: 100%; min-width: 640px; font-size: 14.5px; }
+    th, td { text-align: left; padding: 13px 18px; border-bottom: 1px solid #eef0f4; vertical-align: top; }
+    th { background: #f4f5fb; font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.6px; color: #4338ca; }
+    tr:last-child td { border-bottom: none; }
+    td.status { white-space: nowrap; }
+
+    .pricing-note {
+      background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 14px;
+      padding: 20px 26px; margin-top: 14px; font-size: 15px; color: #3730a3;
+    }
+    .contact {
+      background: linear-gradient(135deg, #1e1b4b 0%, #4338ca 100%);
+      color: #fff; border-radius: 14px; padding: 34px 32px; margin-top: 8px;
+    }
+    .contact h3 { font-size: 21px; margin-bottom: 8px; }
+    .contact p { font-size: 15.5px; opacity: 0.94; max-width: 720px; margin-bottom: 10px; }
+    .contact a { color: #c7d2fe; font-weight: 700; text-decoration: none; }
+    .contact a:hover { color: #fff; }
+    footer { text-align: center; padding: 40px 24px 48px; color: #888; font-size: 13.5px; }
+    @media (max-width: 600px) { .hero h1 { font-size: 27px; } }
+  </style>
+</head>
+<body>
+
+  <nav class="topnav">
+    <a href="index.html">&larr; Overview</a>
+    <span class="brand">Veru365 · Partner preview</span>
+  </nav>
+
+  <div class="hero">
+    <div class="badge">Partner FAQ &amp; pilot path</div>
+    <h1>The business questions, answered in one place</h1>
+    <p>How the reseller model works, how pricing will be structured, what a pilot looks like,
+       and straight answers to the questions partners ask first — so the next step is a
+       conversation, not a wait.</p>
+  </div>
+
+  <div class="section">
+    <div class="kicker">The model</div>
+    <h2>Who does what: the reseller model in one picture</h2>
+    <p class="sub">Veru365 runs the platform. You own the client relationship and your pricing.
+       Each advisor firm you bring on gets its own isolated, fully branded tenant — their logo,
+       their colors, their product name — and their clients only ever see the firm's brand.</p>
+    <div class="chain">
+      <div class="node">
+        <div class="who">Veru365</div>
+        <div class="role">The platform. Hosting, AI planning assistant, security, tenant isolation,
+        the APIs and admin console you provision clients with.</div>
+      </div>
+      <div class="arrow">&rarr;</div>
+      <div class="node you">
+        <div class="who">You (the partner)</div>
+        <div class="role">You own the client relationship, your packaging, and your
+        pricing to advisor firms. We're invisible to your clients.</div>
+      </div>
+      <div class="arrow">&rarr;</div>
+      <div class="node">
+        <div class="who">Advisor firms</div>
+        <div class="role">Branded tenants. Each firm gets the widget on their sites plus a full
+        branded portal for advisors and their clients.</div>
+      </div>
+      <div class="arrow">&rarr;</div>
+      <div class="node">
+        <div class="who">Their clients</div>
+        <div class="role">End investors. They chat with the firm's assistant, see the firm's brand,
+        and get handed to the firm's human advisor.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="kicker">Pricing</div>
+    <h2>How pricing will work</h2>
+    <p class="sub">We're being upfront: partner pricing is not a published rate card yet — it's
+       finalized together during the pilot. Here is the working model we'd start that conversation
+       from.</p>
+    <div class="card">
+      <p style="font-size:15px; color:#444; margin-bottom:10px;"><strong>Working model: a per-client-org
+      platform fee, with volume tiers.</strong> Each advisor firm you onboard is one organization on the
+      platform; you pay a platform fee per active org, and the per-org rate steps down as your client
+      count grows. You set your own pricing to your clients on top — your margin is your business, and
+      we don't participate in it.</p>
+      <p style="font-size:15px; color:#444; margin-bottom:0;">The metering to support this already runs
+      in the platform today: per-org usage reports (active users, conversations, AI token consumption)
+      with CSV export, so both sides bill from the same numbers. Invoicing is handled manually today —
+      there is no payment portal yet — which for a pilot is a feature: it means terms stay flexible
+      while we find the structure that fits your volume.</p>
+    </div>
+    <div class="pricing-note">
+      <strong>No fabricated numbers here on purpose.</strong> Rates depend on expected client count and
+      what's bundled per tier, and quoting a placeholder figure would only anchor the wrong conversation.
+      Bring your expected client volume to the pricing call (see the last section) and we'll put real
+      numbers on paper together during the pilot.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="kicker">The pilot</div>
+    <h2>What the first 30 days look like</h2>
+    <p class="sub">A pilot is us working alongside your team, not a self-serve signup. Everything below
+       uses capabilities that exist today; the pilot is where we provision them for you.</p>
+    <div class="step-block">
+      <h3><span class="n">Week 1</span>Provision and connect</h3>
+      <p>We issue your partner credentials (today these are provisioned per-partner by us, not
+         self-serve), set up the shared workspace, and scope the widget rollout plan for your
+         clients' domains. Your team gets the integration guide and a direct line to ours.</p>
+    </div>
+    <div class="step-block">
+      <h3><span class="n">Weeks 2&ndash;3</span>Onboard 1&ndash;3 real client orgs together</h3>
+      <p>We create the first advisor-firm organizations side by side with your team — branding, feature
+         switches, advisor invitations, widget installed on the firm's site and landing pages — so your
+         production process is proven on real clients, not a sandbox.</p>
+    </div>
+    <div class="step-block">
+      <h3><span class="n">Week 4</span>Review and price</h3>
+      <p>Weekly check-ins throughout; at the end of the month we review usage reports together, lock the
+         pricing structure, and agree the rollout plan for the rest of your client base.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="kicker">FAQ</div>
+    <h2>The questions partners ask first, answered straight</h2>
+
+    <div class="faq-block">
+      <h3>Can the widget go on our website <em>and</em> many separate landing pages?</h3>
+      <p><strong>Yes — and rather than tell you, we can show you.</strong> The install is one script tag
+         per page, and the same tag works on any number of pages and any number of separate domains. There
+         is no per-page setup, ever. We built a fictional client, "Acme Wealth," with three live pages on
+         a third-party domain — a
+         <a class="inline" href="acme-wealth/index.html">main website</a>, a
+         <a class="inline" href="acme-wealth/retirement-landing.html">retirement campaign page</a>, and a
+         <a class="inline" href="acme-wealth/tax-landing.html">tax season landing page</a> — each embedding
+         the same live widget. The install snippet and provisioning flow are on the
+         <a class="inline" href="index.html">overview page</a>.</p>
+      <p>One honest detail: each page load starts a fresh chat session. Conversation context carries
+         through a visitor's session on that page, not across different pages — that's the standard
+         behavior for anonymous website chat.</p>
+      <!-- screenshot slot: assets/widget-plan-turn.png (capture from live staging widget before re-adding) -->
+      <p style="font-size:13px; color:#777; margin-top:8px;">The widget isn't a text bot: it renders live
+         financial modules — Monte Carlo retirement projections, net-worth cards, what-if comparisons —
+         inside the chat, expandable to full size. Try it on any of the demo pages linked above.</p>
+    </div>
+
+    <div class="faq-block">
+      <h3>Who owns the client relationship — and the leads?</h3>
+      <p><strong>You do.</strong> Advisor firms are your clients; we never contact them or their investors.
+         When a website visitor engages the widget, the built-in lead-capture card (it renders as a form
+         for firms that have published their public advisor page) stores the lead inside
+         that firm's own tenant, where the firm's advisor picks it up — the lead never leaves the
+         client org.</p>
+      <p>For your systems, every org supports outbound webhooks: JSON events pushed to endpoints you
+         register (up to 10 per org, HMAC-signed when you set a signing secret on the endpoint), with
+         delivery audit stats. Today's event catalog covers
+         platform events like <code>user.created</code>, <code>fact_finder.completed</code>, and
+         <code>branding.updated</code>; extending it with lead events for your marketing stack is exactly
+         the kind of item we'd scope in the pilot.</p>
+    </div>
+
+    <div class="faq-block">
+      <h3>What does the advisor firm actually get beyond the widget?</h3>
+      <p>The widget is the front door to a complete branded portal. Each firm gets an AI planning
+         assistant that runs real financial tools — Monte Carlo retirement projections, what-if scenario
+         modeling, portfolio analysis — plus personal financial statements that fill themselves from
+         conversation or uploaded documents. Around that: a compliant document vault, appointment
+         scheduling, and automatic activity sync into the CRMs advisors already use (Wealthbox,
+         Salesforce, Microsoft 365, RingCentral), with per-firm feature switches so you can package
+         tiers however you sell them.</p>
+    </div>
+
+    <div class="faq-block">
+      <h3>What happens if a client firm cancels?</h3>
+      <p>Offboarding is a deliberate, controlled process — one API call deactivates the org, removes all
+         members, and revokes any live bank-data connections immediately. Records are retained rather than
+         hard-deleted, because in this industry a regulator can ask for them years later; that retention
+         posture is a feature, not a bug. What a departing firm can take with them (exports of their data)
+         is something we'd define together in pilot terms — usage and billing data already exports to CSV
+         today, and we'd scope broader export needs with you rather than overpromise here.</p>
+    </div>
+
+    <div class="faq-block">
+      <h3>What's the support model?</h3>
+      <p>During the pilot, honest answer: you get the founding team directly — a shared channel, weekly
+         scheduled check-ins, and same-day responses on anything blocking a client launch. We are an
+         early-stage platform and we treat pilot partners accordingly: your issues are our roadmap. Formal
+         SLAs and a tiered support structure are part of the post-pilot commercial agreement, sized to
+         your rollout.</p>
+    </div>
+
+    <div class="faq-block">
+      <h3>Where do the AI's answers come from?</h3>
+      <p>The assistant is a large-language-model application, but the numbers it shows are not model
+         guesses: when it presents a retirement projection or a net-worth figure, it is calling the
+         platform's own calculation engines — the same Monte Carlo simulation and financial-statement
+         data that power the full portal — and rendering the result as an interactive module in the chat.
+         The assistant is built to hand off to the firm's human advisor rather than act as one, and
+         conversations are retained on the platform — nothing is ephemeral. Like any AI system it isn't infallible,
+         which is why the product's posture is "assistant plus human advisor," not "replace the advisor."</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="kicker">Transparency</div>
+    <h2>Shipped vs. pilot vs. roadmap — one table, no spin</h2>
+    <p class="sub">The overview page carries a short version of this; here's the full picture. If it isn't
+       marked "live today," we won't demo it as if it were.</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Capability</th><th>Status</th><th>Detail</th></tr>
+        <tr>
+          <td>Embeddable chat widget with live financial modules</td>
+          <td class="status"><span class="tag live">Live today</span></td>
+          <td>One script tag; Monte Carlo, net-worth, and what-if modules render inside the chat; lead capture built in. Demonstrated on the three Acme pages.</td>
+        </tr>
+        <tr>
+          <td>Widget on unlimited pages and separate domains</td>
+          <td class="status"><span class="tag live">Live today</span></td>
+          <td>No per-page setup. Same snippet everywhere.</td>
+        </tr>
+        <tr>
+          <td>Per-client org provisioning, branding, and feature switches via API</td>
+          <td class="status"><span class="tag live">Live today</span></td>
+          <td>Create orgs, apply logo/colors/product name, toggle features per firm — API or admin console.</td>
+        </tr>
+        <tr>
+          <td>Advisor invitations, incl. bulk (up to 100 per request)</td>
+          <td class="status"><span class="tag live">Live today</span></td>
+          <td>Email invites with shareable links; bulk endpoint with per-item success reporting.</td>
+        </tr>
+        <tr>
+          <td>Outbound webhooks (HMAC-signed) + public lead capture</td>
+          <td class="status"><span class="tag live">Live today</span></td>
+          <td>Up to 10 endpoints per org with delivery stats; rate-limited public lead endpoint per firm.</td>
+        </tr>
+        <tr>
+          <td>Per-org usage metering &amp; billing reports (CSV export)</td>
+          <td class="status"><span class="tag live">Live today</span></td>
+          <td>Users, conversations, token consumption per org — the numbers pricing will bill from.</td>
+        </tr>
+        <tr>
+          <td>Partner credentials</td>
+          <td class="status"><span class="tag pilot">Pilot</span></td>
+          <td>Issued per-partner by us during pilot setup; not self-serve today.</td>
+        </tr>
+        <tr>
+          <td>Per-domain widget allowlisting for your clients' sites</td>
+          <td class="status"><span class="tag roadmap">Roadmap</span></td>
+          <td>The allowlist mechanism doesn't exist yet — the demo embed is intentionally open today; we build and roll this out ahead of production deployments.</td>
+        </tr>
+        <tr>
+          <td>Pricing &amp; commercial terms</td>
+          <td class="status"><span class="tag pilot">Pilot</span></td>
+          <td>Per-client-org fee with volume tiers is the working model; finalized together, no published rate card yet.</td>
+        </tr>
+        <tr>
+          <td>Lead-event webhooks into your marketing stack</td>
+          <td class="status"><span class="tag pilot">Pilot</span></td>
+          <td>Webhook infrastructure is live; adding lead events to the catalog is a pilot scope item.</td>
+        </tr>
+        <tr>
+          <td>Self-serve partner API keys</td>
+          <td class="status"><span class="tag roadmap">Roadmap</span></td>
+          <td>Today the only self-serve keys scope to the inbound webhook receiver.</td>
+        </tr>
+        <tr>
+          <td>Per-visitor chat context on the public widget</td>
+          <td class="status"><span class="tag roadmap">Roadmap</span></td>
+          <td>The public widget demos the assistant; signed-in client conversations happen in the portal today.</td>
+        </tr>
+        <tr>
+          <td>White-label attribution removal ("Powered by" footer)</td>
+          <td class="status"><span class="tag roadmap">Roadmap</span></td>
+          <td>Planned as a reseller-tier entitlement.</td>
+        </tr>
+        <tr>
+          <td>Automated invoicing / payment portal</td>
+          <td class="status"><span class="tag roadmap">Roadmap</span></td>
+          <td>Metering is live; invoicing is manual today.</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="kicker">Next step</div>
+    <h2>Let's put numbers on this</h2>
+    <div class="contact">
+      <h3>The next step is a 30-minute call, not a wait.</h3>
+      <p>You've seen the live demo pages and the self-guided walkthrough. The remaining questions — pricing
+         tiers, pilot client selection, timeline — are a conversation.</p>
+      <p><strong>Bring two numbers:</strong> roughly how many advisor firms you'd want on the platform in
+         the first year, and when you'd want the first one live. Those two answers shape the pricing tiers
+         and the pilot plan; everything else we can work out together.</p>
+      <p>Kentaro — Founder, Veru365 · <a href="mailto:k@veru365.com">k@veru365.com</a></p>
+    </div>
+  </div>
+
+  <footer>
+    Demo environment · Veru365 partner preview
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architecture, Security &amp; Compliance — Built for a Regulated Industry</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: #1a1a2e; background: #f7f8fc; line-height: 1.65;
+    }
+    .topnav {
+      background: #fff; border-bottom: 1px solid #e5e7eb;
+      padding: 12px 24px; font-size: 14.5px;
+    }
+    .topnav a { color: #4338ca; text-decoration: none; font-weight: 600; }
+    .topnav a:hover { text-decoration: underline; }
+    .hero {
+      background: linear-gradient(135deg, #1e1b4b 0%, #4338ca 100%);
+      color: #fff; padding: 64px 24px 54px; text-align: center;
+    }
+    .hero .badge {
+      display: inline-block; background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3); border-radius: 999px;
+      padding: 6px 16px; font-size: 13px; letter-spacing: 0.5px;
+      text-transform: uppercase; margin-bottom: 20px;
+    }
+    .hero h1 { font-size: 34px; font-weight: 700; max-width: 820px; margin: 0 auto 16px; line-height: 1.2; }
+    .hero p { font-size: 18px; max-width: 700px; margin: 0 auto; opacity: 0.92; }
+    .section { max-width: 980px; margin: 0 auto; padding: 48px 24px 8px; }
+    .section h2 { font-size: 25px; margin-bottom: 6px; }
+    .section > p.sub { color: #555; margin-bottom: 24px; font-size: 16px; max-width: 800px; }
+    .kicker { color: #4338ca; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+    .card {
+      background: #fff; border: 1px solid #e5e7eb; border-radius: 14px;
+      padding: 26px 28px; margin-bottom: 18px;
+    }
+    .card h3 { font-size: 17px; margin-bottom: 8px; }
+    .card p { font-size: 14.5px; color: #555; margin-bottom: 10px; }
+    .card p:last-child { margin-bottom: 0; }
+    .card ul { margin: 6px 0 10px 20px; font-size: 14.5px; color: #555; }
+    .card li { margin-bottom: 6px; }
+    .tag {
+      display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: 0.5px;
+      text-transform: uppercase; border-radius: 999px; padding: 3px 10px; margin-bottom: 12px; margin-right: 6px;
+    }
+    .tag.today { background: #dcfce7; color: #15803d; }
+    .tag.pilot { background: #fef3c7; color: #92400e; }
+    pre {
+      background: #1e1b4b; color: #c7d2fe; border-radius: 10px;
+      padding: 14px 18px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12.5px; overflow-x: auto; margin-top: 12px; line-height: 1.5;
+    }
+    pre .c { color: #818cf8; }
+    code.inline {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px;
+      background: #eef2ff; color: #3730a3; border-radius: 5px; padding: 1px 6px;
+    }
+    .diagram-wrap { background: #fff; border: 1px solid #e5e7eb; border-radius: 14px; padding: 20px; overflow-x: auto; margin-bottom: 14px; }
+    .diagram-wrap svg { display: block; min-width: 720px; width: 100%; height: auto; }
+    .callout {
+      background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 14px;
+      padding: 20px 26px; margin-bottom: 18px;
+    }
+    .callout p { font-size: 15px; color: #3730a3; }
+    .honest {
+      background: #fffbeb; border: 1px solid #fde68a; border-radius: 14px; padding: 22px 26px; margin-bottom: 18px;
+    }
+    .honest h3 { font-size: 16px; margin-bottom: 8px; color: #92400e; }
+    .honest p, .honest li { color: #78350f; font-size: 14.5px; }
+    .honest ul { margin: 6px 0 0 18px; }
+    .honest li { margin-bottom: 6px; }
+    .qa { background: #fff; border: 1px solid #e5e7eb; border-radius: 14px; padding: 8px 28px; margin-bottom: 18px; }
+    .qa .qrow { padding: 18px 0; border-bottom: 1px solid #f0f1f5; }
+    .qa .qrow:last-child { border-bottom: none; }
+    .qa .q { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+    .qa .q::before { content: "Q. "; color: #4338ca; }
+    .qa .a { font-size: 14.5px; color: #555; }
+    .qa .a::before { content: "A. "; color: #15803d; font-weight: 700; }
+    footer { text-align: center; padding: 40px 24px 48px; color: #888; font-size: 13.5px; }
+    @media (max-width: 600px) { .hero h1 { font-size: 27px; } }
+  </style>
+</head>
+<body>
+
+  <nav class="topnav"><a href="index.html">&larr; Overview</a></nav>
+
+  <div class="hero">
+    <div class="badge">Partner preview &middot; Diligence guide</div>
+    <h1>Architecture, Security &amp; Compliance — built for a regulated industry</h1>
+    <p>How Veru365 keeps every client firm's data isolated, recorded, and auditable —
+       explained in plain English first, with the technical detail underneath.</p>
+  </div>
+
+  <!-- 1. One-paragraph version -->
+  <div class="section">
+    <div class="kicker">The one-paragraph version</div>
+    <h2>Every client firm is an isolated tenant — and the isolation lives in the database, not just the app</h2>
+    <p class="sub">
+      Each firm you deploy Veru365 for (in our world, an "organization") gets its own walled-off
+      slice of the platform. What makes that claim worth more than marketing copy: the wall is
+      enforced by <strong>PostgreSQL row-level security</strong> inside the database itself. Every
+      query the application runs is automatically scoped to exactly one organization at the database
+      layer, so even a bug in application code cannot read or write another firm's rows. On top of
+      that sits soft-delete record-keeping, audit logging of any platform-staff access, and GDPR
+      export/erasure tooling — the things an advisor's compliance team asks about on day one.
+    </p>
+  </div>
+
+  <!-- 2. System at a glance -->
+  <div class="section">
+    <div class="kicker">System at a glance</div>
+    <h2>What talks to what</h2>
+    <p class="sub">
+      A visitor on any of your clients' web pages sees one chat bubble. Everything behind it runs in
+      our cloud — the host page carries a single script tag and nothing else.
+    </p>
+    <div class="diagram-wrap">
+      <svg viewBox="0 0 900 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Architecture diagram: client web pages embed an isolated cross-origin widget iframe, which talks to the Veru365 app origin, which talks to the API, which reads a per-tenant Postgres database with row-level security; AI models are called by the API through Google Cloud Vertex AI.">
+        <defs>
+          <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#4338ca"/>
+          </marker>
+        </defs>
+        <!-- Client pages -->
+        <rect x="20" y="40" width="200" height="200" rx="12" fill="#f7f8fc" stroke="#c7d2fe"/>
+        <text x="120" y="68" text-anchor="middle" font-size="13" font-weight="700" fill="#4338ca">YOUR CLIENTS' SITES</text>
+        <rect x="40" y="84" width="160" height="40" rx="8" fill="#fff" stroke="#e5e7eb"/>
+        <text x="120" y="109" text-anchor="middle" font-size="12.5" fill="#1a1a2e">Firm website</text>
+        <rect x="40" y="132" width="160" height="40" rx="8" fill="#fff" stroke="#e5e7eb"/>
+        <text x="120" y="157" text-anchor="middle" font-size="12.5" fill="#1a1a2e">Landing page A</text>
+        <rect x="40" y="180" width="160" height="40" rx="8" fill="#fff" stroke="#e5e7eb"/>
+        <text x="120" y="205" text-anchor="middle" font-size="12.5" fill="#1a1a2e">Landing page B</text>
+        <text x="120" y="262" text-anchor="middle" font-size="11.5" fill="#888">one &lt;script&gt; tag per page</text>
+
+        <!-- Widget iframe -->
+        <rect x="290" y="90" width="180" height="100" rx="12" fill="#eef2ff" stroke="#4338ca"/>
+        <text x="380" y="128" text-anchor="middle" font-size="13.5" font-weight="700" fill="#1e1b4b">Chat widget</text>
+        <text x="380" y="148" text-anchor="middle" font-size="11.5" fill="#3730a3">isolated cross-origin iframe,</text>
+        <text x="380" y="164" text-anchor="middle" font-size="11.5" fill="#3730a3">served from our origin</text>
+
+        <!-- API -->
+        <rect x="540" y="90" width="170" height="100" rx="12" fill="#eef2ff" stroke="#4338ca"/>
+        <text x="625" y="128" text-anchor="middle" font-size="13.5" font-weight="700" fill="#1e1b4b">Veru365 API</text>
+        <text x="625" y="148" text-anchor="middle" font-size="11.5" fill="#3730a3">auth, org context,</text>
+        <text x="625" y="164" text-anchor="middle" font-size="11.5" fill="#3730a3">planning tools</text>
+
+        <!-- Postgres -->
+        <rect x="760" y="70" width="120" height="140" rx="12" fill="#1e1b4b" stroke="#1e1b4b"/>
+        <text x="820" y="106" text-anchor="middle" font-size="13" font-weight="700" fill="#c7d2fe">PostgreSQL</text>
+        <line x1="775" y1="122" x2="865" y2="122" stroke="#4338ca"/>
+        <text x="820" y="142" text-anchor="middle" font-size="11" fill="#c7d2fe">Firm A rows</text>
+        <text x="820" y="160" text-anchor="middle" font-size="11" fill="#c7d2fe">Firm B rows</text>
+        <text x="820" y="178" text-anchor="middle" font-size="11" fill="#c7d2fe">Firm C rows</text>
+        <text x="820" y="200" text-anchor="middle" font-size="10.5" font-weight="700" fill="#818cf8">ROW-LEVEL SECURITY</text>
+
+        <!-- AI models -->
+        <rect x="540" y="250" width="170" height="80" rx="12" fill="#fff" stroke="#e5e7eb"/>
+        <text x="625" y="282" text-anchor="middle" font-size="13" font-weight="700" fill="#1a1a2e">AI models</text>
+        <text x="625" y="302" text-anchor="middle" font-size="11.5" fill="#555">Google Cloud Vertex AI</text>
+        <text x="625" y="318" text-anchor="middle" font-size="11.5" fill="#555">(US region)</text>
+
+        <!-- Arrows -->
+        <line x1="220" y1="140" x2="285" y2="140" stroke="#4338ca" stroke-width="2" marker-end="url(#arr)"/>
+        <line x1="470" y1="140" x2="535" y2="140" stroke="#4338ca" stroke-width="2" marker-end="url(#arr)"/>
+        <line x1="710" y1="140" x2="755" y2="140" stroke="#4338ca" stroke-width="2" marker-end="url(#arr)"/>
+        <line x1="625" y1="190" x2="625" y2="245" stroke="#4338ca" stroke-width="2" marker-end="url(#arr)"/>
+        <text x="252" y="128" text-anchor="middle" font-size="10.5" fill="#888">loads</text>
+        <text x="502" y="128" text-anchor="middle" font-size="10.5" fill="#888">HTTPS</text>
+        <text x="733" y="128" text-anchor="middle" font-size="10.5" fill="#888">scoped</text>
+        <text x="662" y="222" font-size="10.5" fill="#888">tool calls</text>
+      </svg>
+    </div>
+    <div class="card">
+      <p>Three things worth noticing in that picture:</p>
+      <ul>
+        <li><strong>The host page is inert.</strong> The widget is a self-contained script that lazy-loads
+            an iframe served from our origin. It shares no cookies, no globals, and no styles with the
+            page it sits on, and every network call it makes is wrapped so a failure can never break
+            your client's website.</li>
+        <li><strong>The browser only ever talks to one origin — ours.</strong> Chat, branding, and
+            lead-capture requests all go through our application server, which holds any credentials
+            server-side. No API tokens or secrets are ever present in the visitor's browser.</li>
+        <li><strong>The AI sits behind the API, not in front of it.</strong> Model calls run through
+            Google Cloud's Vertex AI from inside our cloud environment; the model reaches financial
+            data only through the API's controlled tool calls, never by querying the database itself.</li>
+      </ul>
+    </div>
+    <p class="sub">Everything runs on Google Cloud in the United States (region <code class="inline">us-central1</code>) — Cloud Run services in front of a private-network PostgreSQL instance that accepts no public connections.</p>
+  </div>
+
+  <!-- 3. Tenant isolation -->
+  <div class="section">
+    <div class="kicker">Tenant isolation, honestly explained</div>
+    <h2>What "row-level security" actually buys you</h2>
+    <div class="card">
+      <span class="tag today">Available today</span>
+      <p><strong>Plain English:</strong> most multi-tenant software keeps every customer's data in the
+         same tables and relies on the application code remembering to add "…and only for this
+         customer" to every query. That works until one developer forgets once. Veru365 moves that
+         guarantee into PostgreSQL itself: the database is told, per request, which organization is
+         active, and <strong>row-level security policies on every tenant-scoped table</strong> make
+         rows belonging to other organizations invisible — reads and writes both.</p>
+      <p><strong>Technically:</strong> each API request resolves the caller's organization from their
+         authenticated identity plus an explicit org-context header, and binds it to the database
+         session before any query runs. The RLS policies then filter every statement by that
+         organization ID. The failure mode this changes is the important part:</p>
+      <ul>
+        <li>A bug in application code that omits a tenant filter returns <em>zero</em> rows from other
+            firms — not a data leak, an empty result.</li>
+        <li>An insert or update aimed at the wrong tenant is rejected by the database, not silently
+            written.</li>
+        <li>Cross-tenant access paths (the platform-staff console) are explicit, narrow, and audited —
+            see the records section below.</li>
+      </ul>
+      <p>We treat this as the load-bearing wall of the platform: changes touching tenant-scoped data
+         are gated before any production release by integration tests that run against a real
+         PostgreSQL instance, specifically because SQLite-style unit tests cannot exercise RLS.</p>
+    </div>
+    <div class="callout">
+      <p><strong>Why this matters to you as a reseller:</strong> when two of your clients — even direct
+         competitors — run on the same deployment, the promise that neither can ever see the other's
+         client data does not depend on our developers being careful. It's enforced by the database
+         engine on every single query.</p>
+    </div>
+  </div>
+
+  <!-- 4. Records and retention -->
+  <div class="section">
+    <div class="kicker">Records &amp; retention</div>
+    <h2>A record trail an advisor's compliance officer can live with</h2>
+    <p class="sub">
+      Advisors are regulated communicators. If an AI assistant discusses someone's retirement with
+      them, that conversation is a business record — so the platform is built record-first.
+    </p>
+    <div class="card">
+      <span class="tag today">Available today</span>
+      <h3>What gets recorded</h3>
+      <ul>
+        <li><strong>Conversations are retained</strong>, tenant-scoped, like any other advisor
+            communication — including the tool calls and computed figures behind each answer, not just
+            the prose.</li>
+        <li><strong>Delete means deactivate, never erase the trail.</strong> This is a deliberate,
+            platform-wide pattern: cancelling an invitation soft-cancels the row rather than deleting
+            it; offboarding an entire firm (deprovisioning) deactivates the organization, disconnects
+            live bank/brokerage links, and re-homes users — while <em>retaining every row</em>. There
+            is no "hard delete an org" button, on purpose. (The regulated exception: verified GDPR
+            erasure requests, below.)</li>
+        <li><strong>Platform-staff access is logged and constrained.</strong> When Veru365 staff view a
+            tenant for support, that access is written to a superadmin access log your diligence team
+            can ask about — and staff who are not real members of the firm are <em>blocked at the API
+            layer</em> from making changes through the firm's own admin surfaces (branding, settings,
+            webhooks). Platform-level lifecycle actions, such as adding a member, go through a separate
+            superadmin surface where every action is audit-logged. Support can look with an audit
+            trail; it cannot quietly touch.</li>
+        <li><strong>Outbound webhook deliveries carry HMAC-SHA256 signatures when a signing secret is
+            configured on the endpoint</strong> (recommended, and part of pilot setup), plus
+            per-endpoint delivery/failure counters, so event feeds into your systems are verifiable
+            and accounted for.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="tag pilot">Configured together during pilot</span>
+      <h3>Long-horizon archive retention</h3>
+      <p>Chat-archive storage with an enforced multi-year retention policy is built into the
+         platform. Certified write-once (WORM) locking and the archive pipeline are enabled together
+         with each partner during pilot diligence rather than switched on generically — locking is
+         irreversible, and the right retention regime (17a-4-style WORM versus advisers-act
+         books-and-records) depends on which rules your clients answer to. Retention windows,
+         legal-hold behavior, and regulator-facing export formats are configured in the same
+         conversation.</p>
+    </div>
+  </div>
+
+  <!-- 5. Privacy and data rights -->
+  <div class="section">
+    <div class="kicker">Privacy &amp; data rights</div>
+    <h2>What we collect, where it lives, and how it leaves</h2>
+    <div class="card">
+      <span class="tag today">Available today</span>
+      <h3>The public widget collects almost nothing</h3>
+      <p>A visitor chatting on a public landing page is <strong>anonymous</strong>: no login, no
+         account, a random per-page-load session ID. Personal data enters only if the visitor chooses
+         to submit the lead form — name, email, and an optional message — which is stored
+         tenant-scoped for that firm's advisors and never echoed back in the API response. The lead
+         endpoint is rate-limited per IP to blunt scraping and spam. The signed-in portal is the
+         opposite end of the spectrum — full financial-planning data — and everything there sits
+         behind Auth0-issued identity plus the tenant isolation described above.</p>
+    </div>
+    <div class="card">
+      <span class="tag today">Available today</span>
+      <h3>GDPR-style export and erasure</h3>
+      <p>Data-subject tooling is built and running: export and erasure workflows execute as scheduled
+         jobs in production. Erasure is the one sanctioned exception to the "never hard-delete"
+         posture — a verified data-subject request removes personal data through a controlled
+         workflow, rather than an engineer running ad-hoc SQL.</p>
+    </div>
+    <div class="card">
+      <span class="tag today">Available today</span>
+      <h3>Data residency</h3>
+      <p>All services and data run on Google Cloud in the United States (<code class="inline">us-central1</code>).
+         The production database is reachable only over the private network — it has no public IP.
+         Uploaded brand assets (logos, favicons) live in a private storage bucket and are served
+         through an allowlisted proxy, not exposed directly.</p>
+    </div>
+  </div>
+
+  <!-- 6. AI safety posture -->
+  <div class="section">
+    <div class="kicker">AI safety posture</div>
+    <h2>The assistant computes; it doesn't improvise numbers</h2>
+    <div class="card">
+      <span class="tag today">Available today</span>
+      <p><strong>The design principle:</strong> when the assistant shows a retirement projection, that
+         Monte Carlo simulation actually ran. Dollar figures come from <strong>tool calls into the same
+         planning engine the full platform uses</strong> — net-worth calculations, plan projections,
+         what-if scenarios — and are rendered as structured, interactive modules in the chat rather
+         than free-form model prose. The interesting numbers on screen are computation output, not
+         model output.</p>
+      <ul>
+        <li><strong>Figures carry provenance.</strong> Sourceable dollar amounts are emitted with
+            machine-readable source tags identifying the computation they came from, so a number in a
+            transcript can be traced back to its origin.</li>
+        <li><strong>The model has no database access.</strong> It reaches data exclusively through the
+            API's tools, inside the same per-tenant scoping as every other request.</li>
+        <li><strong>Conversations are retained and auditable</strong> like any advisor communication —
+            the records section above applies in full to AI output.</li>
+        <li><strong>Quality is tested, not assumed:</strong> we run evaluation suites against the
+            assistant's tool-use behavior as part of development, and model changes are staged and
+            human-gated before production.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 7. What we won't claim yet -->
+  <div class="section">
+    <div class="kicker">What we won't claim yet</div>
+    <h2>The honest edges</h2>
+    <div class="honest">
+      <h3>Read this section before your security team does</h3>
+      <ul>
+        <li><strong>No SOC 2 stamp — and we won't pretend otherwise.</strong> We do not currently claim
+            SOC 2 or ISO certification. Formal certifications, penetration-test summaries, and your
+            security questionnaire are handled during pilot diligence, where we can show rather than
+            assert.</li>
+        <li><strong>The public demo widget runs in demo scope.</strong> Today, any site can technically
+            embed the demo widget, and the demo chat runs against shared demonstration data regardless
+            of which brand is shown. The production widget plan adds a per-firm domain allowlist (so
+            only approved sites can embed a firm's widget) and per-firm anonymous visitor scoping.
+            We'd rather tell you that here than have you find it in a browser console.</li>
+        <li><strong>Billing is reporting, not invoicing.</strong> Per-org usage metering and billing
+            reports are live; invoicing is currently a manual process, not a self-serve payment flow.</li>
+        <li><strong>Partner provisioning is done with us, not self-serve.</strong> Creating firm
+            tenants uses a platform-admin API operated with Veru365 during pilot — there is
+            deliberately no self-serve credential that grants platform-wide access.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 8. Questions to grill us on -->
+  <div class="section">
+    <div class="kicker">Diligence starters</div>
+    <h2>Questions we invite you to grill us on</h2>
+    <p class="sub">Short honest answers here; long-form answers, with evidence, during pilot diligence.</p>
+    <div class="qa">
+      <div class="qrow">
+        <p class="q">If a developer ships a buggy query, can Firm A see Firm B's clients?</p>
+        <p class="a">No — row-level security in PostgreSQL filters every query by the active organization, so an unscoped query returns nothing from other tenants rather than leaking them.</p>
+      </div>
+      <div class="qrow">
+        <p class="q">Can your own staff read or edit our clients' data?</p>
+        <p class="a">Staff support access exists, is written to an access log, and staff who aren't real members of a firm are blocked at the API from making changes through the firm's own admin surfaces; platform-level lifecycle actions run through a separate, fully audit-logged superadmin surface. Look with a trail: yes. Touch silently: no.</p>
+      </div>
+      <div class="qrow">
+        <p class="q">What personal data does the widget collect from an anonymous visitor?</p>
+        <p class="a">None automatically. Name, email, and an optional message — only if the visitor submits the lead form, stored tenant-scoped for that firm.</p>
+      </div>
+      <div class="qrow">
+        <p class="q">What happens to a firm's data when they leave?</p>
+        <p class="a">Deprovisioning deactivates the tenant, revokes live bank/brokerage connections, and re-homes users — while retaining all records. Verified GDPR erasure requests are the controlled exception.</p>
+      </div>
+      <div class="qrow">
+        <p class="q">Where does the data physically live?</p>
+        <p class="a">Google Cloud, United States (us-central1), with the database on a private network and no public IP.</p>
+      </div>
+      <div class="qrow">
+        <p class="q">Are the AI's numbers real or generated text?</p>
+        <p class="a">Real: dollar figures come from tool calls into the planning engine (Monte Carlo runs, net-worth math), carry provenance tags, and the full conversation is retained and auditable.</p>
+      </div>
+      <div class="qrow">
+        <p class="q">Are you SOC 2 certified?</p>
+        <p class="a">Not yet, and we don't claim it. Certifications, pen-test results, and questionnaires are pilot-diligence items — ask us and we'll walk you through the current posture directly.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>Demo environment &middot; Veru365 partner preview</footer>
+
+</body>
+</html>

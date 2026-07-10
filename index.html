@@ -74,22 +74,24 @@
   <div class="hero">
     <div class="badge">Partner preview</div>
     <h1>A white-label AI financial-planning platform you can deploy for every client you serve</h1>
-    <p>Veru365 is a complete advisor platform — AI planning assistant, financial statements,
-       retirement projections, portfolio tools, document vault, scheduling, CRM sync — that runs
-       under <em>your client's</em> brand. Provision it per client through an API, and put the
-       chat assistant on any website or landing page with one line of code.</p>
+    <p>Your clients' websites get an AI advisor chat that demos real financial planning and
+       captures leads — installed with one line of code. Behind it sits a complete advisor
+       platform (planning assistant, financial statements, portfolio tools, document vault,
+       scheduling, CRM sync) that runs under <em>your client's</em> brand, provisioned per
+       client through an API.</p>
   </div>
 
   <div class="section">
     <div class="kicker">Live right now — click anything</div>
-    <h2>One fictional client, "Acme Wealth," three of their pages</h2>
-    <p class="sub">This is the exact question you asked: the same chat widget running on a client's
-       main website <strong>and</strong> multiple separate campaign landing pages. These are real,
-       live pages on a third-party domain — open one, click the chat bubble bottom-right, and tap
-       <em>“Am I on track for retirement?”</em> This isn't a text-only bot: the assistant renders
-       <strong>live financial modules right inside the chat</strong> — an interactive Monte&nbsp;Carlo
-       retirement projection, a net-worth summary card, what-if scenario comparisons — the same
-       components from the full platform, expandable to full size with one tap.</p>
+    <h2>Two fictional clients, four live pages</h2>
+    <p class="sub">The question every partner asks first: can the same chat widget run on a client's
+       main website <strong>and</strong> multiple separate campaign landing pages? Yes — here it is
+       doing exactly that. These are real, live pages on a third-party domain — open one, click the
+       chat bubble bottom-right, and tap <em>“Am I on track for retirement?”</em> This isn't a
+       text-only bot: the assistant renders <strong>live financial modules right inside the chat</strong> —
+       an interactive Monte&nbsp;Carlo retirement projection, a net-worth summary card, what-if
+       scenario comparisons — the same components from the full platform, expandable to full size
+       with one tap.</p>
     <div class="cards">
       <a class="card" href="acme-wealth/index.html">
         <span class="tag live">Live</span>
@@ -112,6 +114,14 @@
         <p>Another separate landing page. No extra setup per page — ever.</p>
         <span class="cta">Open →</span>
       </a>
+      <a class="card" href="summit-planning/index.html">
+        <span class="tag live">Live</span>
+        <div class="icon">⛰️</div>
+        <h3>Summit Planning — a second client</h3>
+        <p>Same platform, different brand: this widget pulls a second firm's live branding
+           by swapping one attribute in the install snippet.</p>
+        <span class="cta">Open →</span>
+      </a>
     </div>
     <div class="try" style="margin-top: 20px;">
       <div class="bubble-hint">💬</div>
@@ -128,8 +138,8 @@
        (Monte Carlo retirement projections, stress tests, what-if modeling), personal financial
        statements that fill themselves from conversation or uploaded documents, portfolio analysis and
        stock research, a compliant document vault, appointment scheduling, and automatic activity sync
-       into the CRMs advisors already use (Wealthbox, Salesforce, RingCentral, Microsoft 365) — with a
-       regulator-ready audit trail underneath.</p>
+       into the CRMs advisors already use (Wealthbox, Salesforce, RingCentral, Microsoft 365) — with
+       conversation records retained for compliance underneath.</p>
     <div class="cards">
       <div class="card">
         <div class="icon">🎨</div>
@@ -147,9 +157,9 @@
       <div class="card">
         <div class="icon">🛡️</div>
         <h3>Built for this industry</h3>
-        <p>Tenant isolation at the database layer, WORM message retention, audit logging, GDPR
-           tooling, and per-client feature switches (turn Plaid, vault, portfolio, or scheduling
-           on/off per org).</p>
+        <p>Each firm's data is walled off inside the database itself, AI conversations are retained
+           as business records, platform-staff access is audit-logged, GDPR export/erasure tooling is
+           built in, and features (Plaid, vault, portfolio, scheduling) switch on/off per client.</p>
       </div>
     </div>
   </div>
@@ -198,16 +208,23 @@ curl -X POST "https://api.veru365.com/api/orgs/47/branding/logo" \
 
 <span class="c">&lt;!-- then, on every client web page: --&gt;</span>
 &lt;script src="https://app.veru365.com/widget.js" data-org="acme-wealth" defer&gt;&lt;/script&gt;</pre>
+      <p style="font-size:13px; color:#777; margin-top:8px;">That last line shows the production
+         form of the tag, enabled during pilot provisioning. The live demo on this site points the
+         same tag at our staging environment — view source on any page here to see the exact
+         running snippet.</p>
     </div>
 
     <div class="step-block">
       <h3><span class="n">+</span>Events out, leads in</h3>
-      <p>HMAC-signed webhooks push events to your systems, and every client gets a public,
-         rate-limited lead-capture endpoint and bookable public advisor page — so widget conversations
-         turn into appointments in the advisor's calendar and records in their CRM.</p>
+      <p>Outbound webhooks push platform events to your systems (signed with HMAC-SHA256 when you
+         set a signing secret on the endpoint), and every client gets a public, rate-limited
+         lead-capture endpoint plus a bookable public advisor page. Today advisors pull captured
+         leads via the authenticated lead API and portal; a dedicated lead webhook event is on the
+         roadmap.</p>
       <pre>curl -X POST "https://api.veru365.com/api/orgs/47/webhooks/endpoints" \
   -H "Authorization: Bearer $ORG_OWNER_TOKEN" \
-  -d '{"url": "https://hooks.yourplatform.com/veru365", "event_filter": "lead.*"}'</pre>
+  -d '{"url": "https://hooks.yourplatform.com/veru365",
+       "secret": "whsec_yoursecret", "events": ["fact_finder.completed", "pago.*"]}'</pre>
     </div>
 
     <p class="sub" style="margin-top: 4px;">The full REST API ships with a complete OpenAPI 3 schema —
@@ -215,18 +232,71 @@ curl -X POST "https://api.veru365.com/api/orgs/47/branding/logo" \
   </div>
 
   <div class="section">
+    <div class="kicker">Go deeper</div>
+    <h2>Documentation</h2>
+    <p class="sub">Six focused guides, each written to be read on its own — pick the one that matches
+       your seat at the table.</p>
+    <div class="cards">
+      <a class="card" href="demo-walkthrough.html">
+        <div class="icon">🗺️</div>
+        <h3>5-Minute Demo Walkthrough</h3>
+        <p>A guided, no-jargon script that gets an exec from this page to the "wow" moment — a live
+           Monte Carlo projection rendering inside a chat bubble on a third-party page — in under
+           five minutes.</p>
+        <span class="cta">Start the walkthrough →</span>
+      </a>
+      <a class="card" href="white-label-guide.html">
+        <div class="icon">🎨</div>
+        <h3>White-Label &amp; Theming Guide</h3>
+        <p>Exactly which surfaces rebrand per client, how it's done, and what a two-brand deployment
+           looks like side by side.</p>
+        <span class="cta">Read the guide →</span>
+      </a>
+      <a class="card" href="widget-embed-reference.html">
+        <div class="icon">🧩</div>
+        <h3>Widget Embed Reference</h3>
+        <p>The complete technical contract for embedding the chat widget: the script tag, its
+           attributes, behavior, cross-origin model, and what's demo-scope vs production-hardened.</p>
+        <span class="cta">Read the reference →</span>
+      </a>
+      <a class="card" href="provisioning-api.html">
+        <div class="icon">⚙️</div>
+        <h3>Provisioning API Reference</h3>
+        <p>The four-call walkthrough above, deepened into a real reference: auth model, each
+           endpoint's request/response, webhooks out, and the OpenAPI schema for typed clients.</p>
+        <span class="cta">Read the reference →</span>
+      </a>
+      <a class="card" href="architecture-security.html">
+        <div class="icon">🛡️</div>
+        <h3>Architecture, Security &amp; Compliance</h3>
+        <p>A plain-English, diagram-first tour of how tenant data is isolated and protected —
+           multi-tenant row-level security, records retention, audit logging, GDPR tooling — so a
+           bank-adjacent buyer can say yes.</p>
+        <span class="cta">Read the tour →</span>
+      </a>
+      <a class="card" href="faq-pricing.html">
+        <div class="icon">💼</div>
+        <h3>Partner FAQ, Pricing Model &amp; Pilot Path</h3>
+        <p>The deal-shaped questions in one place — how pricing will work, what a pilot looks like,
+           what's shipped vs roadmap — so the next step is a call, not a wait.</p>
+        <span class="cta">Read the FAQ →</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="section">
     <div class="roadmap">
       <h3>Being transparent: what's pilot-stage vs. shipped</h3>
       <ul>
         <li><strong>Shipped:</strong> everything demonstrated and documented above — multi-tenant orgs, branding API, feature switches, invitations, webhooks, lead capture, the embeddable widget.</li>
-        <li><strong>Provisioned with you during pilot:</strong> partner API credentials (today we issue them per-partner rather than self-serve) and per-domain widget allowlisting for your clients' sites.</li>
-        <li><strong>On the partner roadmap:</strong> self-serve API keys, bulk client onboarding, and per-client chat context on the public widget (today the public widget demos the assistant; signed-in client conversations happen in the portal).</li>
+        <li><strong>Provisioned with you during pilot:</strong> partner API credentials (today we issue them per-partner rather than self-serve).</li>
+        <li><strong>On the partner roadmap:</strong> per-domain widget embed allowlisting (the demo embed is intentionally open today), self-serve API keys, bulk client onboarding, and per-client chat context on the public widget (today the public widget demos the assistant; signed-in client conversations happen in the portal).</li>
       </ul>
     </div>
   </div>
 
   <footer>
-    Demo environment · “Acme Wealth” is a fictional firm · Veru365 — white-label financial planning, powered by AI
+    Demo environment · “Acme Wealth” and “Summit Planning” are fictional firms · Veru365 — white-label financial planning, powered by AI
   </footer>
 
   <script src="https://ihf-frontend-staging-mr64uhwn4a-uc.a.run.app/widget.js" data-org="veru365" data-base="https://ihf-frontend-staging-mr64uhwn4a-uc.a.run.app" defer></script>

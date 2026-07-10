@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Widget Embed Reference — One Script Tag, Any Page</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: #1a1a2e; background: #f7f8fc; line-height: 1.65;
+    }
+    .topnav {
+      background: #fff; border-bottom: 1px solid #e5e7eb; padding: 12px 24px;
+      font-size: 14px;
+    }
+    .topnav a { color: #4338ca; text-decoration: none; font-weight: 600; }
+    .topnav a:hover { text-decoration: underline; }
+    .hero {
+      background: linear-gradient(135deg, #1e1b4b 0%, #4338ca 100%);
+      color: #fff; padding: 56px 24px 48px; text-align: center;
+    }
+    .hero .badge {
+      display: inline-block; background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3); border-radius: 999px;
+      padding: 6px 16px; font-size: 13px; letter-spacing: 0.5px;
+      text-transform: uppercase; margin-bottom: 20px;
+    }
+    .hero h1 { font-size: 34px; font-weight: 700; max-width: 800px; margin: 0 auto 14px; line-height: 1.2; }
+    .hero p { font-size: 18px; max-width: 700px; margin: 0 auto; opacity: 0.92; }
+    .section { max-width: 980px; margin: 0 auto; padding: 48px 24px 8px; }
+    .section h2 { font-size: 26px; margin-bottom: 6px; }
+    .section > p.sub { color: #555; margin-bottom: 24px; font-size: 16px; max-width: 780px; }
+    .kicker { color: #4338ca; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+    .card-block {
+      background: #fff; border: 1px solid #e5e7eb; border-radius: 14px;
+      padding: 26px 28px; margin-bottom: 18px;
+    }
+    .card-block h3 { font-size: 17px; margin-bottom: 6px; }
+    .card-block p { font-size: 14.5px; color: #555; margin-bottom: 8px; }
+    .card-block ul { margin: 8px 0 8px 20px; font-size: 14.5px; color: #555; }
+    .card-block li { margin-bottom: 6px; }
+    pre {
+      background: #1e1b4b; color: #c7d2fe; border-radius: 10px;
+      padding: 14px 18px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12.5px; overflow-x: auto; margin: 12px 0; line-height: 1.5;
+    }
+    pre .c { color: #818cf8; }
+    code {
+      background: #eef2ff; color: #3730a3; border-radius: 5px; padding: 1px 6px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px;
+    }
+    pre code { background: none; color: inherit; padding: 0; font-size: inherit; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 12px 0; }
+    th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #e5e7eb; vertical-align: top; }
+    th { background: #eef2ff; color: #3730a3; font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .table-wrap { overflow-x: auto; }
+    .tag {
+      display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: 0.5px;
+      text-transform: uppercase; border-radius: 999px; padding: 3px 10px;
+    }
+    .tag.live { background: #dcfce7; color: #15803d; }
+    .tag.pilot { background: #fef3c7; color: #92400e; }
+    .tag.roadmap { background: #e0e7ff; color: #4338ca; }
+    .roadmap-box {
+      background: #fffbeb; border: 1px solid #fde68a; border-radius: 14px; padding: 22px 26px; margin-bottom: 18px;
+    }
+    .roadmap-box h3 { font-size: 16px; margin-bottom: 8px; color: #92400e; }
+    .roadmap-box p, .roadmap-box li { color: #78350f; font-size: 14.5px; }
+    .roadmap-box ul { margin-left: 18px; }
+    .note {
+      background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 10px;
+      padding: 14px 18px; font-size: 14px; color: #3730a3; margin: 12px 0;
+    }
+    footer { text-align: center; padding: 40px 24px 48px; color: #888; font-size: 13.5px; }
+    @media (max-width: 600px) { .hero h1 { font-size: 27px; } }
+  </style>
+</head>
+<body>
+
+  <div class="topnav">
+    <a href="index.html">&larr; Overview</a>
+  </div>
+
+  <div class="hero">
+    <div class="badge">Pilot integration guide</div>
+    <h1>Widget Embed Reference — One Script Tag, Any Page</h1>
+    <p>Everything an engineer needs to put the Veru365 chat widget on a client's website
+       and on any number of separate landing pages: the tag, its attributes, what it renders,
+       and exactly which parts are production-hardened versus pilot-scoped today.</p>
+  </div>
+
+  <!-- ============ 1. QUICK START ============ -->
+  <div class="section">
+    <div class="kicker">Quick start</div>
+    <h2>The one-line install</h2>
+    <p class="sub">The entire integration is a single <code>&lt;script&gt;</code> tag. Paste it before the
+       closing <code>&lt;/body&gt;</code> of any page — a homepage, a campaign landing page, a template
+       used by a thousand pages — and a branded chat bubble appears bottom-right. There is no
+       per-page registration, no SDK, no build step.</p>
+
+    <div class="card-block">
+      <h3>Copy-paste block (live demo environment)</h3>
+      <p>This exact tag runs on the demo hub, the three Acme Wealth pages, and this very page —
+         view source and check:</p>
+      <pre><code>&lt;script src="https://ihf-frontend-staging-mr64uhwn4a-uc.a.run.app/widget.js"
+        data-org="veru365"
+        data-base="https://ihf-frontend-staging-mr64uhwn4a-uc.a.run.app" defer&gt;&lt;/script&gt;</code></pre>
+      <p>The <a href="summit-planning/index.html">Summit Planning demo page</a> carries the identical
+         tag with <code>data-org="summit-planning"</code> — that one attribute is the entire
+         difference between the two brands. (The <code>data-base</code> attribute here is redundant —
+         it equals the script's own origin, which is the default — the demo pages just spell it out.)
+         The general form, as documented in the script itself:</p>
+      <pre><code>&lt;script src="https://app.example.com/widget.js" data-org="acme" defer&gt;&lt;/script&gt;</code></pre>
+      <ul>
+        <li><strong>Works identically on N pages.</strong> The same tag goes on the homepage and on every
+            separate landing page — each page gets its own independent chat session.</li>
+        <li><strong><code>defer</code> is recommended</strong> so the script never blocks page rendering.
+            The chat iframe itself is lazy-loaded only when a visitor first clicks the bubble, so the
+            widget costs the host page essentially nothing until it's used.</li>
+        <li><strong>Safe to template blindly.</strong> A second identical tag on the same page is a no-op
+            (double-injection guard), and every network call inside the widget is wrapped so a failure
+            can never break the host page.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============ 2. ATTRIBUTE REFERENCE ============ -->
+  <div class="section">
+    <div class="kicker">Attribute reference</div>
+    <h2>Every attribute the script reads</h2>
+    <p class="sub">Two attributes total. One selects the client brand, the other selects the environment.</p>
+
+    <div class="card-block">
+      <div class="table-wrap">
+      <table>
+        <tr><th>Attribute</th><th>Required</th><th>Type / format</th><th>Default</th><th>Effect</th></tr>
+        <tr>
+          <td><code>data-org</code></td>
+          <td>Yes</td>
+          <td>Org slug — lowercase letters, digits, hyphens; must start and end alphanumeric; max 64 chars
+              (validated server-side as <code>^[a-z0-9][a-z0-9-]{0,63}$</code>)</td>
+          <td>none — if missing, the widget logs a console warning and does not load</td>
+          <td>Drives branding: the widget fetches <code>{base}/api/widget-branding?org={slug}</code>
+              (logo, org name, primary color, app name) and opens the chat page at
+              <code>{base}/widget/chat?org={slug}</code>. Different slugs on different pages serve
+              differently-branded widgets from the same deployment.</td>
+        </tr>
+        <tr>
+          <td><code>data-base</code></td>
+          <td>No</td>
+          <td>Origin URL</td>
+          <td>The origin the script was loaded from (<code>new URL(script.src).origin</code>)</td>
+          <td>Selects the Veru365 environment the widget talks to. Because the default is the script's
+              own origin, a tag whose <code>src</code> already points at the right environment needs
+              no <code>data-base</code> at all — the common case is just <code>src</code> +
+              <code>data-org</code>.</td>
+        </tr>
+      </table>
+      </div>
+      <p><strong>Behavior guarantees baked into the script:</strong> self-contained vanilla-JS IIFE — no
+         framework, no leaked globals; all DOM ids and classes are prefixed <code>v365w-</code> and its
+         styles are scoped, so host-page CSS and widget CSS cannot collide. If the branding fetch fails,
+         the bubble falls back to a neutral default color (<code>#6366f1</code>) rather than erroring.
+         The applied <code>primary_color</code> is validated as a hex color before use.</p>
+      <div class="note"><strong>Honest scope note:</strong> today <code>data-org</code> drives
+        <em>branding only</em>. In this demo environment the underlying chat runs against a shared
+        demo dataset regardless of which org slug embeds the widget. Per-org anonymous/lead
+        chat context is a pilot/roadmap item — see "Demo scope vs production hardening" below.</div>
+    </div>
+  </div>
+
+  <!-- ============ 3. WHAT THE WIDGET RENDERS ============ -->
+  <div class="section">
+    <div class="kicker">What the widget renders</div>
+    <h2>Streaming text plus real financial modules, inline in chat</h2>
+    <p class="sub">This is not a text-only bot. Responses stream token-by-token over SSE
+       (server-sent events), and when the assistant runs a planning tool, the result arrives as a
+       rich interactive module rendered directly inside the chat — the same components the full
+       advisor platform uses.</p>
+
+    <div class="card-block">
+      <h3>Inline modules</h3>
+      <p>The three modules this demo showcases:</p>
+      <ul>
+        <li><strong>Monte Carlo retirement projection</strong> — an interactive probability-of-success
+            chart (the platform's real Monte Carlo chart component, not a screenshot).</li>
+        <li><strong>Net-worth card</strong> — assets, liabilities, and net worth at a glance.</li>
+        <li><strong>What-if comparison</strong> — side-by-side scenario outcomes (e.g. retiring at 60 vs 65).</li>
+      </ul>
+      <p>Technically: card-bearing tool results arrive as <code>modal_serve</code> SSE events carrying a
+         backend-resolved component name; the widget reuses the platform's shared inline-card renderer,
+         so the widget and the signed-in portal render from one component vocabulary
+         (net-worth, financial plan, Monte Carlo result, what-if comparison, portfolio summary,
+         stock analysis, budget overview, tax profile, and more). Events that only make sense inside
+         the full app shell (navigation, side panels, canvas) are ignored cleanly by the widget.</p>
+      <!-- screenshot slot: assets/widget-montecarlo-expanded.png (capture from live staging widget before re-adding) -->
+    </div>
+
+    <div class="card-block">
+      <h3>Panel geometry and expand behavior</h3>
+      <ul>
+        <li><strong>Launcher:</strong> a 56&times;56px bubble fixed bottom-right (20px offsets), tinted with
+            the org's primary color, with accessible open/close labels.</li>
+        <li><strong>Docked panel:</strong> 420&times;600px iframe, bottom-right, rounded corners, capped to
+            the viewport so it never overflows small windows.</li>
+        <li><strong>Expanded panel:</strong> a maximize button in the chat header grows the panel to
+            <code>min(720px, calc(100vw - 40px))</code> wide — room for charts to breathe. The
+            expanded/compact choice survives closing and reopening the panel.</li>
+        <li><strong>Chart expand:</strong> chart-bearing cards (Monte Carlo, what-if, financial plan,
+            stock analysis, portfolio summary) additionally get an Expand button that opens the module
+            in an overlay dialog inside the panel — closable by backdrop click, X, or Escape.</li>
+        <li><strong>Mobile (&le;480px):</strong> the panel goes full-viewport automatically. No extra
+            configuration for mobile templates.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============ 4. CONVERSATION FEATURES ============ -->
+  <div class="section">
+    <div class="kicker">Conversation features</div>
+    <h2>Chips in, leads out</h2>
+    <p class="sub">The widget is built to move an anonymous visitor from curiosity to a captured lead
+       in the advisor's inbox — without a login.</p>
+
+    <div class="card-block">
+      <h3>Quick-reply chips</h3>
+      <p>First-time visitors see four starter prompts that are verified to produce rich-module answers:</p>
+      <ul>
+        <li>"Am I on track for retirement?"</li>
+        <li>"What's my net worth picture?"</li>
+        <li>"Generate my full financial plan with Monte Carlo simulations"</li>
+        <li>"What if I retired at 60 instead of 65?"</li>
+      </ul>
+      <p>Between turns, up to three follow-up chips appear (never while a response is streaming), and
+         chips the visitor already used that session are filtered out.</p>
+    </div>
+
+    <div class="card-block">
+      <h3>Lead capture — how a widget conversation reaches the client's advisor</h3>
+      <ul>
+        <li><strong>Show value first:</strong> the lead form appears exactly once per session, and only
+            after the first response that rendered at least one rich module.</li>
+        <li><strong>Availability preflight:</strong> before rendering the form, the widget checks whether
+            the org has published a public advisor profile (backed by the public
+            <code>GET /api/public/advisor/{slug}</code> endpoint). Orgs that haven't published get a
+            plain "reach out" message instead of a form that could only fail on submit.</li>
+        <li><strong>Submit:</strong> name + email (+ optional message) forward to the public, tenant-scoped
+            lead endpoint <code>POST /api/public/advisor/{slug}/lead</code>. Nothing is echoed back to
+            the visitor; the lead is stored in the client org's tenant.</li>
+        <li><strong>Advisor side:</strong> the client firm's advisors read captured leads through the
+            authenticated <code>GET /api/advisor/leads</code> API and portal — lead delivery is pull,
+            not push, today. (Orgs can separately register outbound webhooks — an org-owner action —
+            for platform events like <code>user.created</code>, <code>fact_finder.completed</code>,
+            and <code>branding.updated</code>; a dedicated lead event is not yet in that catalog.)</li>
+        <li><strong>Rate limiting:</strong> lead submission is rate-limited at 5/min per IP on the backend;
+            the widget shows a graceful "try again in a minute" message on 429.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============ 5. UNDER THE HOOD ============ -->
+  <div class="section">
+    <div class="kicker">How it works under the hood</div>
+    <h2>Why a third-party origin like github.io works today</h2>
+    <p class="sub">This page itself is served from GitHub Pages — a domain Veru365 doesn't control —
+       and the widget runs fine on it. Here is the cross-origin model that makes that true, in plain terms
+       first: the widget lives in its own sealed window inside your page, talks only to Veru365, and can
+       neither read your page nor be broken by it.</p>
+
+    <div class="card-block">
+      <h3>Iframe isolation</h3>
+      <p>The bubble and panel shell are injected by <code>widget.js</code>; the chat itself renders inside
+         an iframe pointed at the Veru365-hosted page <code>/widget/chat?org={slug}</code>. That page is a
+         standalone chat surface — no app shell, no sidebar, no login flow. Host page and chat are separate
+         browsing contexts: your scripts and CSS can't reach into the chat, and the chat can't reach into
+         your page. The only host-page communication is a size-toggle <code>postMessage</code>
+         (expand/collapse), and the script verifies the message actually comes from its own iframe before
+         acting on it.</p>
+    </div>
+
+    <div class="card-block">
+      <h3>Frame-ancestors: embeddable widget, non-embeddable app</h3>
+      <p>The Veru365 app as a whole refuses to be framed by third parties
+         (<code>X-Frame-Options: SAMEORIGIN</code> + CSP <code>frame-ancestors 'self'</code> on every route).
+         Exactly three surfaces carve out of that default so host pages can frame them:
+         <code>/widget</code>, <code>/widget/*</code>, and <code>/widget.js</code>. The route matching is
+         deliberately precise so no future route can become embeddable by accident. In the current demo
+         environment the carve-out is <code>frame-ancestors *</code> — any site can embed — which is
+         explicitly demo scope; production replaces <code>*</code> with a per-org domain allowlist.</p>
+    </div>
+
+    <div class="card-block">
+      <h3>One origin, three proxies</h3>
+      <p>The widget only ever talks to the Veru365 app origin. Three small server-side proxies sit behind it:</p>
+      <ul>
+        <li><code>/api/widget-branding</code> — proxies the backend's public, no-auth branding-by-slug
+            endpoint, with CORS enabled (branding is public data) and a 60-second cache. This is why the
+            branding fetch works from any origin.</li>
+        <li><code>/api/widget-chat</code> — streams chat over SSE. Credentials are injected
+            <em>server-side</em>; no token ever reaches the browser or the host page. The request body is
+            allowlisted (message, session id, conversation id) so a host page cannot smuggle arbitrary
+            fields upstream.</li>
+        <li><code>/api/widget-lead</code> — availability preflight + lead submission, passing through the
+            backend's public lead endpoints.</li>
+      </ul>
+      <p>In this demo environment, every one of these proxies is dark unless explicitly enabled per
+         environment via server configuration — production is structurally unaffected by the demo setup.</p>
+    </div>
+  </div>
+
+  <!-- ============ 6. PAGE-INTEGRATION NOTES ============ -->
+  <div class="section">
+    <div class="kicker">For template builders</div>
+    <h2>Page-integration notes</h2>
+    <p class="sub">Practical answers for putting the tag into landing-page templates at scale.</p>
+
+    <div class="card-block">
+      <ul>
+        <li><strong>Load order:</strong> anywhere in the document works; end of <code>&lt;body&gt;</code>
+            with <code>defer</code> is the recommended pattern. The script waits for DOM readiness and the
+            heavy part (the iframe) doesn't load until first open.</li>
+        <li><strong>Footprint:</strong> one 56px bubble at bottom-right with 20px offsets, at
+            z-index 2147483000 (above virtually everything). If your template has its own bottom-right
+            floating element (a cookie bar, a "back to top" button), place it elsewhere or accept the
+            widget on top.</li>
+        <li><strong>Mobile:</strong> nothing to configure — at &le;480px the open panel takes the full
+            viewport and returns to the page on close.</li>
+        <li><strong>Many pages, one org:</strong> every page of a client's web presence uses the identical
+            tag with the same <code>data-org</code>. There is no per-page registration, key, or dashboard
+            step — the demo hub and the three "Acme Wealth" landing pages each carry the identical
+            snippet, copy-pasted.</li>
+        <li><strong>Many clients, one template:</strong> the only thing that varies per client is the
+            <code>data-org</code> slug, so a template engine can inject it as a single variable — the
+            Summit Planning demo page is exactly that: the same snippet with a different slug, serving
+            a second brand.</li>
+        <li><strong>Sessions:</strong> each page load is an independent chat session with multi-turn context
+            within that session. Sessions are page-scoped in the current build; cross-page conversation
+            continuity is not yet supported.</li>
+        <li><strong>Attribution:</strong> the chat footer shows "Powered by {app name}". Removing it is
+            planned as a reseller-tier entitlement, not available today.</li>
+      </ul>
+    </div>
+
+    <div class="card-block">
+      <h3>If your pages ship a Content-Security-Policy</h3>
+      <p>Landing-page templates often carry a strict CSP. The widget needs three allowances for the
+         Veru365 origin your <code>src</code> points at (call it <code>&lt;veru365-origin&gt;</code>):</p>
+      <ul>
+        <li><code>script-src &lt;veru365-origin&gt;</code> — loads <code>widget.js</code> itself.</li>
+        <li><code>connect-src &lt;veru365-origin&gt;</code> — the script fetches the org's branding
+            (colors, name) from the host page context.</li>
+        <li><code>frame-src &lt;veru365-origin&gt;</code> — the chat panel is an iframe served from
+            that origin. Everything the chat does (SSE streaming, lead submission) happens inside
+            the iframe, so no further host-page directives are needed.</li>
+      </ul>
+      <p><strong>Payload and updates:</strong> <code>widget.js</code> is small — about 7&nbsp;KB raw,
+         roughly 3&nbsp;KB compressed — and the heavy part (the chat iframe) doesn't load until first
+         open. The tag is unversioned by design: widget updates ship with our deployment and
+         already-embedded pages pick them up on their next page load, with no re-tagging across a
+         template fleet.</p>
+    </div>
+  </div>
+
+  <!-- ============ 7. DEMO SCOPE VS PRODUCTION HARDENING ============ -->
+  <div class="section">
+    <div class="kicker">Being transparent</div>
+    <h2>Demo scope vs production hardening</h2>
+    <p class="sub">Everything demonstrated on this site is real and running. These are the items where
+       the demo configuration is deliberately looser than a production rollout would be, stated plainly.</p>
+
+    <div class="card-block">
+      <div class="table-wrap">
+      <table>
+        <tr><th>Capability</th><th>Status today</th><th>Production plan</th></tr>
+        <tr>
+          <td>Embed from any domain</td>
+          <td><span class="tag live">Available today</span> — <code>frame-ancestors *</code> and open
+              branding CORS mean any site can embed any org's widget</td>
+          <td><span class="tag pilot">Pilot</span> — per-org <em>domain allowlist</em>: each client org
+              declares which domains may embed its widget; provisioned together during pilot</td>
+        </tr>
+        <tr>
+          <td>Per-org widget branding</td>
+          <td><span class="tag live">Available today</span> — <code>data-org</code> switches the
+              widget's branding per client org, live-verifiable on this site's two demo brands</td>
+          <td>Unchanged — same mechanism in production</td>
+        </tr>
+        <tr>
+          <td>Per-org chat identity</td>
+          <td><span class="tag roadmap">Roadmap</span> — not available today: chat runs against a
+              shared demo dataset regardless of which org embeds the widget</td>
+          <td><span class="tag roadmap">Roadmap</span> — anonymous/lead session auth with true per-org
+              scoping, so each client's widget conversations are their own</td>
+        </tr>
+        <tr>
+          <td>Lead capture &amp; rate limiting</td>
+          <td><span class="tag live">Available today</span> — live end-to-end; the backend limit
+              (5/min/IP) is currently measured at the proxy's egress IP, so all widget visitors share one
+              bucket — fine at demo scale</td>
+          <td><span class="tag pilot">Pilot</span> — forwarding real client IPs for per-visitor limits at
+              reseller traffic volumes</td>
+        </tr>
+        <tr>
+          <td>White-label attribution</td>
+          <td><span class="tag live">Available today</span> — footer reads "Powered by {your client's app
+              name}" when the org sets one</td>
+          <td><span class="tag roadmap">Roadmap</span> — removing the footer entirely as a reseller-tier
+              entitlement</td>
+        </tr>
+        <tr>
+          <td>Partner credentials</td>
+          <td><span class="tag pilot">Pilot</span> — org provisioning and platform credentials are issued
+              per-partner by Veru365 during a pilot, not self-serve</td>
+          <td><span class="tag roadmap">Roadmap</span> — self-serve API keys</td>
+        </tr>
+      </table>
+      </div>
+    </div>
+
+    <div class="roadmap-box">
+      <h3>Why we list this at all</h3>
+      <p>You're evaluating a platform your clients will put their brand on. We'd rather you learn the
+         current edges from us than discover them in diligence. Everything marked "Available today" is
+         verifiable against the running demo on this site; "Pilot" items are configured with you during
+         onboarding; "Roadmap" items don't exist yet and we won't pretend they do.</p>
+    </div>
+  </div>
+
+  <!-- ============ 8. TROUBLESHOOTING ============ -->
+  <div class="section">
+    <div class="kicker">Troubleshooting</div>
+    <h2>When something doesn't show up</h2>
+    <p class="sub">The three failure modes you'll actually hit, with causes and checks.</p>
+
+    <div class="card-block">
+      <h3>The bubble doesn't appear</h3>
+      <ul>
+        <li><strong>Missing <code>data-org</code>:</strong> the widget logs a console warning and refuses
+            to load. Check the browser console first.</li>
+        <li><strong>Invalid slug:</strong> slugs must match <code>^[a-z0-9][a-z0-9-]{0,63}$</code> —
+            lowercase, no spaces, no leading/trailing hyphen.</li>
+        <li><strong>Script blocked:</strong> verify the <code>src</code> URL loads directly in a browser
+            tab, and that no ad blocker or CSP on the host page is blocking third-party scripts.</li>
+        <li><strong>Two tags on one page:</strong> harmless — the second is intentionally a no-op. Not a
+            cause of missing bubbles, but worth knowing when templates compose.</li>
+      </ul>
+    </div>
+
+    <div class="card-block">
+      <h3>Branding doesn't load (bubble is generic indigo)</h3>
+      <ul>
+        <li><strong>This is the designed fallback:</strong> if the branding fetch fails or returns nothing
+            usable, the widget stays functional with a neutral default color rather than breaking.</li>
+        <li><strong>Check the slug:</strong> open <code>{base}/api/widget-branding?org={slug}</code>
+            directly — it should return the org's name and colors. An unknown slug returns an error and
+            the widget falls back.</li>
+        <li><strong>Check the color value:</strong> the org's primary color is only applied if it's a
+            valid hex color; anything else is ignored defensively.</li>
+      </ul>
+    </div>
+
+    <div class="card-block">
+      <h3>A rich module doesn't render</h3>
+      <ul>
+        <li><strong>Not every answer carries a module:</strong> modules render when the assistant runs a
+            card-producing planning tool. The four quick-reply chips are verified to produce at least one
+            module each; free-form questions may come back as text only.</li>
+        <li><strong>Known-bad prompts in the current build:</strong> stock-analysis questions route to a
+            part of the assistant not yet reachable inside the widget, and market-crash stress-test
+            prompts currently hit a known bug we're fixing — both are issues in the current build,
+            not embed problems.</li>
+        <li><strong>Raw markup in long answers:</strong> long-form answers (notably the full
+            financial-plan prompt) may occasionally show raw value-source markup in the prose in the
+            current demo build — a rendering fix is in review.</li>
+        <li><strong>Red inline error bubble:</strong> the demo backend can cold-start slowly; stream errors
+            surface as a graceful inline message ("Sorry, the chat service is unreachable."). Retry the
+            message — the widget and your page are unaffected.</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    Demo environment · Veru365 partner preview
+  </footer>
+
+  <script src="https://ihf-frontend-staging-mr64uhwn4a-uc.a.run.app/widget.js" data-org="veru365" data-base="https://ihf-frontend-staging-mr64uhwn4a-uc.a.run.app" defer></script>
+</body>
+</html>
