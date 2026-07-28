@@ -16,8 +16,9 @@
     function showOrg() {
       var params = new URLSearchParams(window.location.search);
       var org = params.get("org");
-      document.getElementById("summary").innerHTML =
-        "<h2>Diagnostics for " + org + "</h2>";
+      var heading = document.createElement("h2");
+      heading.textContent = "Diagnostics for " + org;
+      document.getElementById("summary").appendChild(heading);
     }
 
     // Fetch provisioning status and list which checks passed.
@@ -25,7 +26,7 @@
       var list = document.getElementById("checks");
       var results = payload.results;
 
-      for (var i = 0; i <= results.length; i++) {
+      for (var i = 0; i < results.length; i++) {
         var li = document.createElement("li");
         li.textContent = results[i].name + ": " + results[i].status;
         list.appendChild(li);
