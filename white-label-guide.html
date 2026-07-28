@@ -125,12 +125,12 @@
     <img src="assets/two-brands-side-by-side.png" alt="Two live branded assistants side by side — Acme Wealth and Summit Planning — differing only by the data-org attribute" style="max-width:100%;border-radius:10px;border:1px solid #e5e7eb;margin-top:12px">
     <p style="font-size:14px;color:#555;margin-top:8px">This comparison is a live page you can open right now: <a href="compare-brands.html" style="color:#4338ca;font-weight:600">compare-brands.html</a> — both assistants stream real responses.</p>
     <pre><span class="c">&lt;!-- The demo hub and Acme pages (view source — this is verbatim) --&gt;</span>
-&lt;script src="https://ihf-frontend-staging-mr64uhwn4a-uc.a.run.app/widget.js"
-        data-org="veru365" data-base="https://ihf-frontend-staging-mr64uhwn4a-uc.a.run.app" defer&gt;&lt;/script&gt;
+&lt;script src="https://staging.veru365.com/widget.js"
+        data-org="veru365" data-base="https://staging.veru365.com" defer&gt;&lt;/script&gt;
 
 <span class="c">&lt;!-- The Summit Planning page — same install, second brand --&gt;</span>
-&lt;script src="https://ihf-frontend-staging-mr64uhwn4a-uc.a.run.app/widget.js"
-        data-org="summit-planning" data-base="https://ihf-frontend-staging-mr64uhwn4a-uc.a.run.app" defer&gt;&lt;/script&gt;</pre>
+&lt;script src="https://staging.veru365.com/widget.js"
+        data-org="summit-planning" data-base="https://staging.veru365.com" defer&gt;&lt;/script&gt;</pre>
     <div class="note">The demo currently serves from our staging environment — that's why the
       <code class="inline">src</code> above is a staging host. A production install provisioned
       during a pilot is the same tag pointed at the production host
@@ -245,7 +245,7 @@ curl -X POST "https://api.veru365.com/api/orgs/47/branding/favicon" \
          consume, so you can check a client's live branding with a plain GET, no token needed. This
          one is live right now: it returns the branding record behind the Summit Planning demo page
          (run it yourself, in a terminal or a browser).</p>
-      <pre>curl "https://app1-backend-staging-mr64uhwn4a-uc.a.run.app/api/orgs/url-handle/summit-planning/branding"
+      <pre>curl "https://api-staging.veru365.com/api/orgs/url-handle/summit-planning/branding"
 
 <span class="c">// → { "org_name": "Summit Planning", "slug": "summit-planning", "logo_url": null,
 //     "primary_color": "#B45309", "secondary_color": "#78350F",

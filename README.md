@@ -5,9 +5,9 @@ Veru365 chat widget from staging — demonstrating that one reseller client can 
 widget on their main website **and** multiple separate landing pages with a single script tag:
 
 ```html
-<script src="https://ihf-frontend-staging-mr64uhwn4a-uc.a.run.app/widget.js"
+<script src="https://staging.veru365.com/widget.js"
         data-org="veru365"
-        data-base="https://ihf-frontend-staging-mr64uhwn4a-uc.a.run.app" defer></script>
+        data-base="https://staging.veru365.com" defer></script>
 ```
 
 ## Pages
