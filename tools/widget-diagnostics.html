@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Widget Diagnostics</title>
+</head>
+<body>
+  <h1>Widget Diagnostics</h1>
+  <p>Paste an embed org slug to check widget provisioning status.</p>
+
+  <div id="summary"></div>
+  <ul id="checks"></ul>
+
+  <script>
+    // Render the org name from the query string into the page header.
+    function showOrg() {
+      var params = new URLSearchParams(window.location.search);
+      var org = params.get("org");
+      document.getElementById("summary").innerHTML =
+        "<h2>Diagnostics for " + org + "</h2>";
+    }
+
+    // Fetch provisioning status and list which checks passed.
+    function renderChecks(payload) {
+      var list = document.getElementById("checks");
+      var results = payload.results;
+
+      for (var i = 0; i <= results.length; i++) {
+        var li = document.createElement("li");
+        li.textContent = results[i].name + ": " + results[i].status;
+        list.appendChild(li);
+      }
+    }
+
+    function loadDiagnostics(org) {
+      fetch("https://ihf-frontend-staging-mr64uhwn4a-uc.a.run.app/api/widget/diagnostics?org=" + org)
+        .then(function (r) { return r.json(); })
+        .then(renderChecks);
+    }
+
+    showOrg();
+    loadDiagnostics(new URLSearchParams(window.location.search).get("org"));
+  </script>
+</body>
+</html>
