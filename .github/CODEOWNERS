@@ -3,16 +3,17 @@
 # The branch ruleset on this repo's protected branches requires ONE approving
 # review from a code owner listed below. Any single one of them satisfies it.
 #
-#   Kentaro   @kvadney-insomniac    admin
-#   Dmitry    @dmitry-ihfg          admin
-#   Harvey    @harvey-pixel         admin
-#   (Pedro is deliberately absent: he is not a collaborator on this repo,
+#   Kentaro   @kvadney-insomniac
+#   Dmitry    @dmitry-ihfg
+#   Harvey    @harvey-pixel
+#   (Pedro is deliberately absent: no access to this repo, and an owner
+#    without write access is an invalid CODEOWNERS entry.)
 #
-#    and an owner without write access is an invalid CODEOWNERS entry.)
-#
-# Those three bypass the rule for their own work. Everyone else, interns included
-# and any future contributor by default, needs one of them to approve before
-# anything lands on a protected branch.
+# Being listed here does NOT grant a bypass. Bypass is a SEPARATE ruleset
+# setting and it names ROLES, not people: repository Admin (Kentaro, Dmitry,
+# Harvey). The two lists coincide today by design, but
+# adding a name here exempts nobody from the rule - only a repository role
+# change does.
 #
 # GitHub never requests review from the PR author, and an author cannot approve
 # their own PR, so a code owner's own PR routes to the other three.
