@@ -6,9 +6,11 @@
 #   Kentaro   @kvadney-insomniac    admin
 #   Dmitry    @dmitry-ihfg          admin
 #   Harvey    @harvey-pixel         admin
-#   Pedro     @pacveru365           maintain
+#   (Pedro is deliberately absent: he is not a collaborator on this repo,
 #
-# Those four bypass the rule for their own work. Everyone else, interns included
+#    and an owner without write access is an invalid CODEOWNERS entry.)
+#
+# Those three bypass the rule for their own work. Everyone else, interns included
 # and any future contributor by default, needs one of them to approve before
 # anything lands on a protected branch.
 #
@@ -18,4 +20,4 @@
 # The CODEOWNERS that governs a PR is the one on the BASE branch, not the head.
 # If you protect another branch, copy this file onto it too.
 
-*   @kvadney-insomniac @dmitry-ihfg @harvey-pixel @pacveru365
+*   @kvadney-insomniac @dmitry-ihfg @harvey-pixel
