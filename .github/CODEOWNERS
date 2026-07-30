@@ -1,0 +1,21 @@
+# CODEOWNERS - this is a GATE, not a suggestion.
+#
+# The branch ruleset on this repo's protected branches requires ONE approving
+# review from a code owner listed below. Any single one of them satisfies it.
+#
+#   Kentaro   @kvadney-insomniac    admin
+#   Dmitry    @dmitry-ihfg          admin
+#   Harvey    @harvey-pixel         admin
+#   Pedro     @pacveru365           maintain
+#
+# Those four bypass the rule for their own work. Everyone else, interns included
+# and any future contributor by default, needs one of them to approve before
+# anything lands on a protected branch.
+#
+# GitHub never requests review from the PR author, and an author cannot approve
+# their own PR, so a code owner's own PR routes to the other three.
+#
+# The CODEOWNERS that governs a PR is the one on the BASE branch, not the head.
+# If you protect another branch, copy this file onto it too.
+
+*   @kvadney-insomniac @dmitry-ihfg @harvey-pixel @pacveru365
