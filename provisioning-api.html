@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Provisioning API Reference — Onboard a Client in Four Calls · Veru365 Partner Preview</title>
+  <title>Provisioning API Reference: Onboard a Client in Four Calls · Veru365 Partner Preview</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -93,13 +93,13 @@
 
   <div class="hero">
     <div class="badge">Pilot integration guide · API reference</div>
-    <h1>Provisioning API Reference — Onboard a Client in Four Calls</h1>
+    <h1>Provisioning API Reference: Onboard a Client in Four Calls</h1>
     <p>The overview page shows the four-call flow at a glance. This page is the engineer's version:
        the auth model, each endpoint's real request and response shapes, the events that flow back to
        your systems, and where the OpenAPI schema lives so you can generate typed clients.
        Everything marked <em>Available today</em> is live and verifiable; anything we'd set up with
        you is labeled <em>Pilot</em>, and anything that doesn't exist yet is labeled
-       <em>Roadmap</em> — no exceptions.</p>
+       <em>Roadmap</em>, no exceptions.</p>
   </div>
 
   <!-- ============================================================ -->
@@ -108,7 +108,7 @@
     <h2>Authentication and the partner model</h2>
     <p class="sub">In plain terms: there are two hats. Your <strong>partner token</strong> creates and
        manages client organizations from the outside. Each client's <strong>org-owner token</strong>
-       controls what happens <em>inside</em> that organization — its branding, its people, its
+       controls what happens <em>inside</em> that organization, its branding, its people, its
        webhooks. Keeping those separate is deliberate: it means we can never quietly rewrite a
        client's brand or membership on their behalf, and neither can you without being the actual
        owner of record.</p>
@@ -125,7 +125,7 @@
          credentials today. During a pilot, Veru365 provisions the partner account with you.
          The only self-serve API-key surface in the product is an org-scoped key for the inbound
          integration webhook receiver (<code>POST /api/integrations/keys</code>, scope
-         <code>webhook:write</code>) — it authorizes exactly one endpoint and nothing else.
+         <code>webhook:write</code>), it authorizes exactly one endpoint and nothing else.
          Self-serve partner keys are <span class="tag roadmap inline">Roadmap</span>.</p>
     </div>
 
@@ -138,7 +138,7 @@
       <p><strong>A guardrail worth knowing about:</strong> writes to branding, webhooks, invite
          links, and settings are protected by an impersonation block. A platform superadmin who is
          <em>not</em> a real member of the org is audit-logged and <strong>403-blocked</strong> from
-         these writes — the write must come from the org owner's own JWT. If you want your
+         these writes, the write must come from the org owner's own JWT. If you want your
          operations account to manage a client org directly, add it as a real owner first via
          <code>POST /api/platform-admin/orgs/{org_id}/members</code> (that action is audited too).</p>
     </div>
@@ -147,7 +147,7 @@
       <span class="tag live">Available today</span>
       <h3>Org context travels in a header, not the URL</h3>
       <p>For all <code>/api/orgs/{org_id}/...</code> endpoints, the active org is resolved from an
-         <code>X-Org-Id</code> (numeric) or <code>X-Org-Slug</code> header — the
+         <code>X-Org-Id</code> (numeric) or <code>X-Org-Slug</code> header, the
          <code>{org_id}</code> path segment is largely vestigial. Always send the header:</p>
       <pre>curl -X GET "https://api.veru365.com/api/orgs/47/members" \
   -H "Authorization: Bearer $ORG_OWNER_TOKEN" \
@@ -169,7 +169,7 @@
     <p class="sub">One call provisions an isolated tenant. "Isolated tenant" is not marketing:
        every client org's data is separated at the database layer with row-level security, so one
        client's advisors, end-clients, conversations, documents, and financial data are invisible to
-       every other org — including your other clients on the same deployment.</p>
+       every other org, including your other clients on the same deployment.</p>
 
     <div class="block">
       <span class="tag live">Available today</span>
@@ -201,10 +201,10 @@
 <span class="c"># 201 → includes token, invite_url, expires_at (7 days), idv_required</span></pre>
       <h4>Lifecycle after creation</h4>
       <ul>
-        <li><code>PATCH /api/platform-admin/orgs/{org_id}</code> — query params <code>status</code> and/or <code>trial_expires_at</code>. Enforced transitions: <code>active→suspended</code>, <code>trial→active|suspended</code>, <code>suspended→active</code>.</li>
-        <li><code>POST .../{org_id}/suspend</code> and <code>POST .../{org_id}/activate</code> — convenience state flips.</li>
-        <li><strong>Ending a relationship is a cascade, not a status flip.</strong> Setting <code>status=deactivated</code> directly is rejected with 400. Use <code>POST .../{org_id}/deprovision</code>: it deactivates the org, soft-removes every member, revokes live bank connections, and re-homes orphaned users. Nothing is hard-deleted — all rows are retained for compliance.</li>
-        <li><code>GET /api/platform-admin/orgs</code> — searchable, filterable list with member counts, conversation counts, token usage, trial countdown, and onboarding progress per org. <code>GET .../orgs/{org_id}/health</code> gives a deep per-org health view. CSV export exists.</li>
+        <li><code>PATCH /api/platform-admin/orgs/{org_id}</code>: query params <code>status</code> and/or <code>trial_expires_at</code>. Enforced transitions: <code>active→suspended</code>, <code>trial→active|suspended</code>, <code>suspended→active</code>.</li>
+        <li><code>POST .../{org_id}/suspend</code> and <code>POST .../{org_id}/activate</code>: convenience state flips.</li>
+        <li><strong>Ending a relationship is a cascade, not a status flip.</strong> Setting <code>status=deactivated</code> directly is rejected with 400. Use <code>POST .../{org_id}/deprovision</code>: it deactivates the org, soft-removes every member, revokes live bank connections, and re-homes orphaned users. Nothing is hard-deleted, all rows are retained for compliance.</li>
+        <li><code>GET /api/platform-admin/orgs</code>: searchable, filterable list with member counts, conversation counts, token usage, trial countdown, and onboarding progress per org. <code>GET .../orgs/{org_id}/health</code> gives a deep per-org health view. CSV export exists.</li>
       </ul>
     </div>
   </div>
@@ -214,18 +214,18 @@
     <div class="kicker">Section 3 · Call two</div>
     <h2>Apply branding</h2>
     <p class="sub">Colors and product name go in as JSON; logo and favicon upload as files. Branding
-       applies across the client's portal, their login page, and the embedded chat widget — the
+       applies across the client's portal, their login page, and the embedded chat widget, the
        widget reads branding through a public endpoint keyed by the org slug, cached for 60 seconds,
        so a change is visitor-visible within about a minute.</p>
 
     <div class="block">
       <span class="tag live">Available today</span>
       <h3><span class="method patch">PATCH</span><span class="endpoint">/api/orgs/{org_id}/branding</span></h3>
-      <p>Auth: <strong>org owner's own JWT</strong> (superadmin impersonation is 403-blocked — see
+      <p>Auth: <strong>org owner's own JWT</strong> (superadmin impersonation is 403-blocked, see
          Section 1). All fields optional, but an empty body is a 400.</p>
       <div class="tablewrap"><table>
         <tr><th>Field</th><th>Validation</th></tr>
-        <tr><td><code>app_name</code>, <code>display_name</code></td><td><code>display_name</code> ≤ 80 chars. This is the product name end users see — the browser tab says the client's name, not ours.</td></tr>
+        <tr><td><code>app_name</code>, <code>display_name</code></td><td><code>display_name</code> ≤ 80 chars. This is the product name end users see, the browser tab says the client's name, not ours.</td></tr>
         <tr><td><code>primary_color</code>, <code>secondary_color</code>, <code>accent_color</code></td><td><code>primary_color</code>/<code>accent_color</code> must be <code>#RRGGBB</code> hex.</td></tr>
         <tr><td><code>logo_url</code>, <code>favicon_url</code></td><td><code>logo_url</code> must be <code>https://</code> and ≤ 512 chars.</td></tr>
         <tr><td><code>custom_css</code></td><td>≤ 4096 chars; must not contain <code>&lt;script</code>.</td></tr>
@@ -240,9 +240,9 @@
   -d '{"app_name": "Acme Wealth", "primary_color": "#0E7C5A", "secondary_color": "#0A3D2E"}'</pre>
       <h4>Logo and favicon upload</h4>
       <p><span class="method post">POST</span><span class="endpoint">/api/orgs/{org_id}/branding/logo</span>
-         and <span class="endpoint">.../branding/favicon</span> — multipart form, field
+         and <span class="endpoint">.../branding/favicon</span>, multipart form, field
          <code>file</code>, image-validated, <strong>5&nbsp;MB cap</strong>. The response gives you a
-         public proxy URL (<code>file_url</code>) that renders on unauthenticated pages — that's the
+         public proxy URL (<code>file_url</code>) that renders on unauthenticated pages, that's the
          URL you store back into branding.</p>
       <pre>curl -X POST "https://api.veru365.com/api/orgs/47/branding/logo" \
   -H "Authorization: Bearer $ORG_OWNER_TOKEN" \
@@ -252,8 +252,8 @@
 <span class="c"># → {"file_url": "https://api.veru365.com/api/public/branding/…", "file_key": "branding/…"}</span></pre>
       <h4>Reading branding back (no auth required)</h4>
       <ul>
-        <li><code>GET /api/orgs/url-handle/{slug}/branding</code> — public; the same endpoint the widget and login page use. Returns <code>{org_name, slug, logo_url, primary_color, secondary_color, favicon_url, app_name}</code>.</li>
-        <li><code>GET /api/orgs/{org_id}/branding/preview</code> — member; branding rendered as CSS variables, handy for building your own preview UI.</li>
+        <li><code>GET /api/orgs/url-handle/{slug}/branding</code>: public; the same endpoint the widget and login page use. Returns <code>{org_name, slug, logo_url, primary_color, secondary_color, favicon_url, app_name}</code>.</li>
+        <li><code>GET /api/orgs/{org_id}/branding/preview</code>: member; branding rendered as CSS variables, handy for building your own preview UI.</li>
       </ul>
     </div>
   </div>
@@ -262,7 +262,7 @@
   <div class="section">
     <div class="kicker">Section 4 · Call three</div>
     <h2>Set feature switches</h2>
-    <p class="sub">Every org carries a set of on/off switches for platform capabilities — bank
+    <p class="sub">Every org carries a set of on/off switches for platform capabilities, bank
        connections, document vault, portfolio tools, tax, budgeting, scheduling, CRM integrations.
        If you sell tiers ("Starter" without bank sync, "Premium" with everything), this is the
        endpoint your packaging maps onto: one PATCH per client at provisioning time, or later when
@@ -272,7 +272,7 @@
       <span class="tag live">Available today</span>
       <h3><span class="method patch">PATCH</span><span class="endpoint">/api/platform-admin/orgs/{org_id}/features</span></h3>
       <p>Auth: partner token. Body is a JSON object under a <code>features</code> key; values merge
-         into the org's existing flags. <strong>Unknown keys are rejected with 400</strong> — the
+         into the org's existing flags. <strong>Unknown keys are rejected with 400</strong>: the
          flag list is canonical, so a typo fails loudly instead of silently doing nothing.</p>
       <pre>curl -X PATCH "https://api.veru365.com/api/platform-admin/orgs/47/features" \
   -H "Authorization: Bearer $PARTNER_TOKEN" \
@@ -294,7 +294,7 @@
          and defaults to OFF; those are flipped by Veru365 platform staff rather than partners.</p>
       <p>Any member of the org can read the effective flags:
          <code>GET /api/orgs/{org_id}/features</code> returns the flat dict of defaults merged with
-         the org's overrides — useful if your own UI needs to know what a given client has.</p>
+         the org's overrides, useful if your own UI needs to know what a given client has.</p>
     </div>
   </div>
 
@@ -305,7 +305,7 @@
     <p class="sub">The invitation call returns a ready-to-send link, so your onboarding flow works
        even if the invite email bounces. Role model in one paragraph: an org has
        <strong>owners</strong> (full control of the org: branding, members, webhooks, settings) and
-       <strong>users</strong> (the advisor's clients — they use the platform, they don't administer
+       <strong>users</strong> (the advisor's clients, they use the platform, they don't administer
        it). There's also a middle "Manager" option: a user-role member granted restricted admin
        powers, who can invite and manage plain user-role clients but only sees invitations they
        themselves sent and can never mint owners.</p>
@@ -319,8 +319,8 @@
         <tr><td><code>email</code></td><td>Required.</td></tr>
         <tr><td><code>role</code></td><td><code>"owner"</code> or <code>"user"</code> (default <code>"user"</code>).</td></tr>
         <tr><td><code>first_name</code>, <code>last_name</code>, <code>job_title</code></td><td>Optional.</td></tr>
-        <tr><td><code>idv_required</code></td><td>Default false — require identity verification before the invite can be accepted.</td></tr>
-        <tr><td><code>grant_restricted_admin</code></td><td>Default false — the "Manager" invite described above.</td></tr>
+        <tr><td><code>idv_required</code></td><td>Default false, require identity verification before the invite can be accepted.</td></tr>
+        <tr><td><code>grant_restricted_admin</code></td><td>Default false, the "Manager" invite described above.</td></tr>
       </table></div>
       <pre>curl -X POST "https://api.veru365.com/api/orgs/47/invitations" \
   -H "Authorization: Bearer $ORG_OWNER_TOKEN" \
@@ -337,8 +337,8 @@
       </ul>
       <h4>Onboarding at reseller scale</h4>
       <ul>
-        <li><span class="tag live inline" style="margin-left:0">Available today</span> <code>POST /api/orgs/{org_id}/invitations/bulk</code> — up to <strong>100 invitations per request</strong> with partial-success semantics: the response separates <code>created</code> from per-item <code>errors</code>, so one bad email doesn't abort the batch.</li>
-        <li><span class="tag live inline" style="margin-left:0">Available today</span> <code>GET /api/orgs/{org_id}/invite-link</code> — a shareable, unlimited-use invite code (<code>…/welcome?code=XXXXXXXX</code>), lazily created on first read, rotatable with a POST. Good for "put one signup link on the client's site" flows. (Org owner only — restricted admins can't use the invite link.)</li>
+        <li><span class="tag live inline" style="margin-left:0">Available today</span> <code>POST /api/orgs/{org_id}/invitations/bulk</code>: up to <strong>100 invitations per request</strong> with partial-success semantics: the response separates <code>created</code> from per-item <code>errors</code>, so one bad email doesn't abort the batch.</li>
+        <li><span class="tag live inline" style="margin-left:0">Available today</span> <code>GET /api/orgs/{org_id}/invite-link</code>: a shareable, unlimited-use invite code (<code>…/welcome?code=XXXXXXXX</code>), lazily created on first read, rotatable with a POST. Good for "put one signup link on the client's site" flows. (Org owner only, restricted admins can't use the invite link.)</li>
       </ul>
     </div>
   </div>
@@ -349,7 +349,7 @@
     <h2>Events out: webhooks and lead capture</h2>
     <p class="sub">Provisioning is calls in; this is data flowing back. Each client org can register
        webhook endpoints that push signed events into your systems, and each client gets a public,
-       rate-limited lead-capture endpoint plus a bookable public advisor page — so a widget
+       rate-limited lead-capture endpoint plus a bookable public advisor page, so a widget
        conversation on a landing page can end as a lead record and a booked meeting.</p>
 
     <div class="block">
@@ -374,8 +374,8 @@ Content-Type: application/json
 X-Webhook-Signature: sha256=&lt;hex HMAC-SHA256 of the raw body, keyed by your endpoint secret&gt;
 User-Agent: Veru365-Webhooks/1.0</pre>
       <ul>
-        <li><strong>Verify the signature.</strong> The secret is optional but strongly recommended — without one, <code>X-Webhook-Signature</code> is empty and deliveries are unauthenticated.</li>
-        <li><strong>Retries:</strong> 3 attempts total (delays 2s, then 8s), 10-second timeout, best-effort — failures are logged and never block the platform.</li>
+        <li><strong>Verify the signature.</strong> The secret is optional but strongly recommended, without one, <code>X-Webhook-Signature</code> is empty and deliveries are unauthenticated.</li>
+        <li><strong>Retries:</strong> 3 attempts total (delays 2s, then 8s), 10-second timeout, best-effort, failures are logged and never block the platform.</li>
         <li><strong>Delivery audit built in:</strong> <code>GET .../webhooks/endpoints</code> returns per-endpoint stats (<code>last_delivered_at</code>, <code>last_status_code</code>, <code>total_deliveries</code>, <code>total_failures</code>).</li>
       </ul>
       <h4>Current event catalog</h4>
@@ -383,7 +383,7 @@ User-Agent: Veru365-Webhooks/1.0</pre>
          member). Today's catalog: <code>user.created</code>, <code>fact_finder.completed</code>,
          <code>pago.score_updated</code>, <code>branding.updated</code>,
          <code>org.trial_expired</code>. A dedicated lead event (e.g. <code>lead.created</code>) is
-         <span class="tag roadmap inline">Roadmap</span> — today you pull leads via the
+         <span class="tag roadmap inline">Roadmap</span>, today you pull leads via the
          authenticated <code>GET /api/advisor/leads</code> endpoint, so nothing is lost, it's just
          pull rather than push.</p>
     </div>
@@ -391,19 +391,19 @@ User-Agent: Veru365-Webhooks/1.0</pre>
     <div class="block">
       <span class="tag live">Available today</span>
       <h3>Public lead capture and the bookable advisor page</h3>
-      <p><span class="method get">GET</span><span class="endpoint">/api/public/advisor/{slug}</span> —
+      <p><span class="method get">GET</span><span class="endpoint">/api/public/advisor/{slug}</span>:
          no auth. Returns the org's public advisor card (name, firm, scheduling URL, branding) for
          the public booking page. It 404s unless the org has <em>explicitly published</em> its
-         advisor (a <code>public_enabled</code> flag plus a scheduling URL in org settings) —
+         advisor (a <code>public_enabled</code> flag plus a scheduling URL in org settings),
          unknown and unpublished slugs are deliberately indistinguishable, and the advisor's phone
          number is intentionally omitted from the public payload.</p>
-      <p><span class="method post">POST</span><span class="endpoint">/api/public/advisor/{slug}/lead</span> —
+      <p><span class="method post">POST</span><span class="endpoint">/api/public/advisor/{slug}/lead</span>:
          no auth, <strong>rate-limited 5/min per IP</strong>. Body:
          <code>{"name": "…", "email": "…", "message": "…?"}</code> (name ≤ 200 chars, message
-         ≤ 2000). Returns <code>{"ok": true}</code> and nothing else — it never echoes data back.
+         ≤ 2000). Returns <code>{"ok": true}</code> and nothing else, it never echoes data back.
          Leads land tenant-scoped in the client's org; advisors read them via the authenticated
          <code>GET /api/advisor/leads</code>.</p>
-      <p>This is the same pair of endpoints the embedded chat widget's lead-capture card uses — the
+      <p>This is the same pair of endpoints the embedded chat widget's lead-capture card uses, the
          form only renders for orgs whose advisor page is published, so visitors never see a form
          that can only fail.</p>
     </div>
@@ -414,7 +414,7 @@ User-Agent: Veru365-Webhooks/1.0</pre>
       <p>The reverse direction exists too: <span class="method post">POST</span>
          <span class="endpoint">/api/integrations/webhook</span> accepts custodian/CRM events,
          authenticated by an org-scoped <code>X-API-Key</code>. Keys are created by an org admin at
-         <code>POST /api/integrations/keys</code> — the raw key is returned <strong>exactly
+         <code>POST /api/integrations/keys</code>: the raw key is returned <strong>exactly
          once</strong>; only its SHA-256 hash is stored. This key authorizes only this receiver.</p>
     </div>
   </div>
@@ -424,18 +424,18 @@ User-Agent: Veru365-Webhooks/1.0</pre>
     <div class="kicker">Section 7</div>
     <h2>End-to-end example: "Acme Wealth," zero to live widget</h2>
     <p class="sub">One annotated script matching the overview page's four steps. It assumes the
-       partner token exists (pilot-provisioned) and the owner accepted their org-setup invite — or
+       partner token exists (pilot-provisioned) and the owner accepted their org-setup invite, or
        already had an account, in which case step 0 is skipped.</p>
 
     <div class="block">
       <pre><span class="c">#!/usr/bin/env bash
 # Provision "Acme Wealth" end to end.
-# PARTNER_TOKEN  — pilot-provisioned platform-admin JWT
-# ORG_OWNER_TOKEN — the client owner's JWT (their account, their writes)</span>
+# PARTNER_TOKEN : pilot-provisioned platform-admin JWT
+# ORG_OWNER_TOKEN: the client owner's JWT (their account, their writes)</span>
 BASE="https://api.veru365.com"
 
 <span class="c"># 0. (If the owner has no account yet) send an org-setup invite and stop here.
-#    On acceptance the owner creates their own org and becomes its owner — so
+#    On acceptance the owner creates their own org and becomes its owner, so
 #    SKIP step 1 in that path and look up the new org's id/slug via
 #    GET /api/platform-admin/orgs instead. Step 1 applies only when the owner
 #    already had an account (no setup invite sent).</span>
@@ -444,14 +444,14 @@ curl -X POST "$BASE/api/platform-admin/org-setup-invites" \
   -H "Content-Type: application/json" \
   -d '{"email": "jordan@acmewealth.com", "first_name": "Jordan"}'
 
-<span class="c"># 1. Create the org — NOTE: query params, not a JSON body. Capture the id + slug.</span>
+<span class="c"># 1. Create the org, NOTE: query params, not a JSON body. Capture the id + slug.</span>
 ORG_JSON=$(curl -s -X POST \
   "$BASE/api/platform-admin/orgs?name=Acme%20Wealth&amp;owner_user_id=1042&amp;trial_days=30" \
   -H "Authorization: Bearer $PARTNER_TOKEN")
 ORG_ID=$(echo "$ORG_JSON" | jq -r .id)      <span class="c"># → 47</span>
 ORG_SLUG=$(echo "$ORG_JSON" | jq -r .slug)  <span class="c"># → acme-wealth</span>
 
-<span class="c"># 2. Branding — owner token + org-context header. Upload the logo first,
+<span class="c"># 2. Branding: owner token + org-context header. Upload the logo first,
 #    then PATCH colors/name (logo file_url from the upload response).</span>
 LOGO_URL=$(curl -s -X POST "$BASE/api/orgs/$ORG_ID/branding/logo" \
   -H "Authorization: Bearer $ORG_OWNER_TOKEN" -H "X-Org-Id: $ORG_ID" \
@@ -463,14 +463,14 @@ curl -X PATCH "$BASE/api/orgs/$ORG_ID/branding" \
   -d "{\"app_name\": \"Acme Wealth\", \"primary_color\": \"#0E7C5A\",
        \"secondary_color\": \"#0A3D2E\", \"logo_url\": \"$LOGO_URL\"}"
 
-<span class="c"># 3. Feature switches — package the tier this client bought.</span>
+<span class="c"># 3. Feature switches, package the tier this client bought.</span>
 curl -X PATCH "$BASE/api/platform-admin/orgs/$ORG_ID/features" \
   -H "Authorization: Bearer $PARTNER_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"features": {"enable_plaid": true, "enable_file_vault": true,
                     "enable_scheduling": true}}'
 
-<span class="c"># 4. Invite the advisor team — check email_delivery.sent; the invite URL is
+<span class="c"># 4. Invite the advisor team, check email_delivery.sent; the invite URL is
 #    in the response either way. Bulk endpoint takes up to 100 at once.</span>
 curl -X POST "$BASE/api/orgs/$ORG_ID/invitations" \
   -H "Authorization: Bearer $ORG_OWNER_TOKEN" -H "X-Org-Id: $ORG_ID" \
@@ -484,13 +484,13 @@ curl -X POST "$BASE/api/orgs/$ORG_ID/webhooks/endpoints" \
   -d '{"url": "https://hooks.yourplatform.com/veru365",
        "secret": "whsec_yourrandomsecret", "events": ["*"]}'
 
-<span class="c"># 6. The widget — one line on any page the client owns, any number of pages:
+<span class="c"># 6. The widget, one line on any page the client owns, any number of pages:
 #    &lt;script src="https://app.veru365.com/widget.js" data-org="acme-wealth" defer&gt;&lt;/script&gt;</span></pre>
       <div class="callout warn">
         <strong>Demo-environment note:</strong> the live widget on this demo site runs against our
         staging environment, and the widget embed itself is a staging demo capability today.
         Per-org anonymous chat scoping and per-domain embed allowlisting are
-        <span class="tag roadmap inline">Roadmap</span> — they don't exist yet and we won't pretend
+        <span class="tag roadmap inline">Roadmap</span>, they don't exist yet and we won't pretend
         they do. The provisioning endpoints above, however, are the production API surface.
       </div>
     </div>
@@ -501,14 +501,14 @@ curl -X POST "$BASE/api/orgs/$ORG_ID/webhooks/endpoints" \
     <div class="kicker">Section 8</div>
     <h2>OpenAPI 3 schema and client generation</h2>
     <p class="sub">You shouldn't hand-write any of the calls above. The full API ships a complete
-       OpenAPI 3 schema — several hundred documented paths — from which you can generate typed
+       OpenAPI 3 schema, several hundred documented paths, from which you can generate typed
        clients in any language.</p>
 
     <div class="block">
       <span class="tag live">Available today</span>
       <h3>Where the schema lives</h3>
       <ul>
-        <li><code>GET /openapi.json</code> on the API base — the complete machine-readable schema (the same schema we generate our own typed clients from).</li>
+        <li><code>GET /openapi.json</code> on the API base, the complete machine-readable schema (the same schema we generate our own typed clients from).</li>
         <li>Public docs endpoints, no auth: <code>GET /api/docs/</code> (index), <code>/api/docs/integration-spec</code>, <code>/api/docs/webhooks</code>, <code>/api/docs/auth-guide</code>.</li>
       </ul>
       <pre><span class="c"># TypeScript</span>
@@ -519,17 +519,17 @@ openapi-generator generate -i https://api.veru365.com/openapi.json \
   -g python -o ./veru365-client</pre>
       <h4>Error shape</h4>
       <ul>
-        <li><strong>400</strong> — malformed request or disallowed operation (empty branding body, unknown feature flag, forbidden status transition).</li>
-        <li><strong>403</strong> — authenticated but not allowed (impersonation block, restricted-admin role escalation).</li>
-        <li><strong>404 / 409 / 410</strong> — not found (or deliberately hidden, on public endpoints); conflict (duplicate org name, duplicate pending invite, already a member); expired (invitation tokens).</li>
-        <li><strong>422</strong> — validation failure; branding returns a structured <code>{"validation_errors": [...]}</code> list, date params return standard validation errors.</li>
-        <li><strong>429</strong> — rate limits on the public endpoints (lead capture 5/min/IP, invitation preview 10/min/IP).</li>
+        <li><strong>400</strong>: malformed request or disallowed operation (empty branding body, unknown feature flag, forbidden status transition).</li>
+        <li><strong>403</strong>: authenticated but not allowed (impersonation block, restricted-admin role escalation).</li>
+        <li><strong>404 / 409 / 410</strong>: not found (or deliberately hidden, on public endpoints); conflict (duplicate org name, duplicate pending invite, already a member); expired (invitation tokens).</li>
+        <li><strong>422</strong>: validation failure; branding returns a structured <code>{"validation_errors": [...]}</code> list, date params return standard validation errors.</li>
+        <li><strong>429</strong>: rate limits on the public endpoints (lead capture 5/min/IP, invitation preview 10/min/IP).</li>
       </ul>
       <h4>Idempotency and retry notes</h4>
       <ul>
-        <li>There is no idempotency-key header today (<span class="tag roadmap inline">Roadmap</span>). In practice the natural keys guard you: re-running org creation with the same name returns <strong>409</strong>, re-inviting the same email returns <strong>409</strong> — so a blind retry of the provisioning script fails loudly rather than duplicating.</li>
-        <li>PATCHes (branding, features) are safe to retry — they merge the same values again.</li>
-        <li>Webhook deliveries are at-least-once in effect (3 attempts) — make your receiver idempotent on <code>event</code> + <code>occurred_at</code> + <code>org_id</code>.</li>
+        <li>There is no idempotency-key header today (<span class="tag roadmap inline">Roadmap</span>). In practice the natural keys guard you: re-running org creation with the same name returns <strong>409</strong>, re-inviting the same email returns <strong>409</strong>: so a blind retry of the provisioning script fails loudly rather than duplicating.</li>
+        <li>PATCHes (branding, features) are safe to retry, they merge the same values again.</li>
+        <li>Webhook deliveries are at-least-once in effect (3 attempts), make your receiver idempotent on <code>event</code> + <code>occurred_at</code> + <code>org_id</code>.</li>
         <li>On transient 5xx/timeout, retry with backoff; on 409, treat as "already done" and read the resource instead.</li>
       </ul>
     </div>
@@ -539,8 +539,8 @@ openapi-generator generate -i https://api.veru365.com/openapi.json \
   <div class="section">
     <div class="kicker">Section 9</div>
     <h2>The no-code alternative</h2>
-    <p class="sub">The core of this page — creating orgs, feature switches, branding, and
-       invitations — is also available point-and-click in the Veru365 admin console, which hits the
+    <p class="sub">The core of this page, creating orgs, feature switches, branding, and
+       invitations, is also available point-and-click in the Veru365 admin console, which hits the
        same backend with the same permission rules. Plenty of teams run their first handful of
        clients from the console and only reach for the API once volume makes automation worth it;
        for anything the console doesn't yet surface, the API above is the complete interface.</p>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Veru365 for Partners — White-Label Platform &amp; Integration Guide</title>
+  <title>Veru365 for Partners: White-Label Platform &amp; Integration Guide</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -75,22 +75,22 @@
     <div class="badge">Partner preview</div>
     <h1>A white-label AI financial-planning platform you can deploy for every client you serve</h1>
     <p>Your clients' websites get an AI advisor chat that demos real financial planning and
-       captures leads — installed with one line of code. Behind it sits a complete advisor
+       captures leads, installed with one line of code. Behind it sits a complete advisor
        platform (planning assistant, financial statements, portfolio tools, document vault,
        scheduling, CRM sync) that runs under <em>your client's</em> brand, provisioned per
        client through an API.</p>
   </div>
 
   <div class="section">
-    <div class="kicker">Live right now — click anything</div>
+    <div class="kicker">Live right now, click anything</div>
     <h2>Two fictional clients, four live pages</h2>
     <p class="sub">The question every partner asks first: can the same chat widget run on a client's
-       main website <strong>and</strong> multiple separate campaign landing pages? Yes — here it is
-       doing exactly that. These are real, live pages on a third-party domain — open one, click the
+       main website <strong>and</strong> multiple separate campaign landing pages? Yes, here it is
+       doing exactly that. These are real, live pages on a third-party domain, open one, click the
        chat bubble bottom-right, and tap <em>“Am I on track for retirement?”</em> This isn't a
-       text-only bot: the assistant renders <strong>live financial modules right inside the chat</strong> —
+       text-only bot: the assistant renders <strong>live financial modules right inside the chat</strong>,
        an interactive Monte&nbsp;Carlo retirement projection, a net-worth summary card, what-if
-       scenario comparisons — the same components from the full platform, expandable to full size
+       scenario comparisons, the same components from the full platform, expandable to full size
        with one tap.</p>
     <div class="cards">
       <a class="card" href="acme-wealth/index.html">
@@ -111,13 +111,13 @@
         <span class="tag live">Live</span>
         <div class="icon">🧾</div>
         <h3>Tax season campaign page</h3>
-        <p>Another separate landing page. No extra setup per page — ever.</p>
+        <p>Another separate landing page. No extra setup per page, ever.</p>
         <span class="cta">Open →</span>
       </a>
       <a class="card" href="summit-planning/index.html">
         <span class="tag live">Live</span>
         <div class="icon">⛰️</div>
-        <h3>Summit Planning — a second client</h3>
+        <h3>Summit Planning: a second client</h3>
         <p>Same platform, different brand: this widget pulls a second firm's live branding
            by swapping one attribute in the install snippet.</p>
         <span class="cta">Open →</span>
@@ -125,7 +125,7 @@
     </div>
     <div class="try" style="margin-top: 20px;">
       <div class="bubble-hint">💬</div>
-      <p><strong>Or try it without leaving this page</strong> — the widget is installed right here.
+      <p><strong>Or try it without leaving this page</strong>: the widget is installed right here.
          Click the bubble in the corner and ask it something a real client would ask.</p>
     </div>
   </div>
@@ -138,20 +138,20 @@
        (Monte Carlo retirement projections, stress tests, what-if modeling), personal financial
        statements that fill themselves from conversation or uploaded documents, portfolio analysis and
        stock research, a compliant document vault, appointment scheduling, and automatic activity sync
-       into the CRMs advisors already use (Wealthbox, Salesforce, RingCentral, Microsoft 365) — with
+       into the CRMs advisors already use (Wealthbox, Salesforce, RingCentral, Microsoft 365), with
        conversation records retained for compliance underneath.</p>
     <div class="cards">
       <div class="card">
         <div class="icon">🎨</div>
         <h3>Their brand, everywhere</h3>
-        <p>Logo, colors, favicon, and even the product name are per-org settings — the browser tab
+        <p>Logo, colors, favicon, and even the product name are per-org settings, the browser tab
            says the client's name, not ours. Rebranding an org is one API call or two minutes in the
            admin console.</p>
       </div>
       <div class="card">
         <div class="icon">🧠</div>
         <h3>A real planning assistant</h3>
-        <p>Not a FAQ bot — it runs retirement projections, updates financial statements, analyzes
+        <p>Not a FAQ bot, it runs retirement projections, updates financial statements, analyzes
            portfolios, and hands off to the human advisor with an AI-written summary.</p>
       </div>
       <div class="card">
@@ -192,7 +192,7 @@ curl -X POST "https://api.veru365.com/api/orgs/47/branding/logo" \
 
     <div class="step-block">
       <h3><span class="n">3</span>Choose what this client gets</h3>
-      <p>Feature switches per org — bank connections, document vault, portfolio tools, scheduling —
+      <p>Feature switches per org, bank connections, document vault, portfolio tools, scheduling,
          so you can package tiers however you sell them.</p>
       <pre>curl -X PATCH "https://api.veru365.com/api/platform-admin/orgs/47/features" \
   -H "Authorization: Bearer $PARTNER_TOKEN" \
@@ -210,7 +210,7 @@ curl -X POST "https://api.veru365.com/api/orgs/47/branding/logo" \
 &lt;script src="https://app.veru365.com/widget.js" data-org="acme-wealth" defer&gt;&lt;/script&gt;</pre>
       <p style="font-size:13px; color:#777; margin-top:8px;">That last line shows the production
          form of the tag, enabled during pilot provisioning. The live demo on this site points the
-         same tag at our staging environment — view source on any page here to see the exact
+         same tag at our staging environment, view source on any page here to see the exact
          running snippet.</p>
     </div>
 
@@ -227,21 +227,21 @@ curl -X POST "https://api.veru365.com/api/orgs/47/branding/logo" \
        "secret": "whsec_yoursecret", "events": ["fact_finder.completed", "pago.*"]}'</pre>
     </div>
 
-    <p class="sub" style="margin-top: 4px;">The full REST API ships with a complete OpenAPI 3 schema —
+    <p class="sub" style="margin-top: 4px;">The full REST API ships with a complete OpenAPI 3 schema,
        your team can generate typed clients in any language.</p>
   </div>
 
   <div class="section">
     <div class="kicker">Go deeper</div>
     <h2>Documentation</h2>
-    <p class="sub">Six focused guides, each written to be read on its own — pick the one that matches
+    <p class="sub">Six focused guides, each written to be read on its own, pick the one that matches
        your seat at the table.</p>
     <div class="cards">
       <a class="card" href="demo-walkthrough.html">
         <div class="icon">🗺️</div>
         <h3>5-Minute Demo Walkthrough</h3>
-        <p>A guided, no-jargon script that gets an exec from this page to the "wow" moment — a live
-           Monte Carlo projection rendering inside a chat bubble on a third-party page — in under
+        <p>A guided, no-jargon script that gets an exec from this page to the "wow" moment, a live
+           Monte Carlo projection rendering inside a chat bubble on a third-party page, in under
            five minutes.</p>
         <span class="cta">Start the walkthrough →</span>
       </a>
@@ -269,16 +269,16 @@ curl -X POST "https://api.veru365.com/api/orgs/47/branding/logo" \
       <a class="card" href="architecture-security.html">
         <div class="icon">🛡️</div>
         <h3>Architecture, Security &amp; Compliance</h3>
-        <p>A plain-English, diagram-first tour of how tenant data is isolated and protected —
-           multi-tenant row-level security, records retention, audit logging, GDPR tooling — so a
+        <p>A plain-English, diagram-first tour of how tenant data is isolated and protected,
+           multi-tenant row-level security, records retention, audit logging, GDPR tooling, so a
            bank-adjacent buyer can say yes.</p>
         <span class="cta">Read the tour →</span>
       </a>
       <a class="card" href="faq-pricing.html">
         <div class="icon">💼</div>
         <h3>Partner FAQ, Pricing Model &amp; Pilot Path</h3>
-        <p>The deal-shaped questions in one place — how pricing will work, what a pilot looks like,
-           what's shipped vs roadmap — so the next step is a call, not a wait.</p>
+        <p>The deal-shaped questions in one place, how pricing will work, what a pilot looks like,
+           what's shipped vs roadmap, so the next step is a call, not a wait.</p>
         <span class="cta">Read the FAQ →</span>
       </a>
     </div>
@@ -288,7 +288,7 @@ curl -X POST "https://api.veru365.com/api/orgs/47/branding/logo" \
     <div class="roadmap">
       <h3>Being transparent: what's pilot-stage vs. shipped</h3>
       <ul>
-        <li><strong>Shipped:</strong> everything demonstrated and documented above — multi-tenant orgs, branding API, feature switches, invitations, webhooks, lead capture, the embeddable widget.</li>
+        <li><strong>Shipped:</strong> everything demonstrated and documented above, multi-tenant orgs, branding API, feature switches, invitations, webhooks, lead capture, the embeddable widget.</li>
         <li><strong>Provisioned with you during pilot:</strong> partner API credentials (today we issue them per-partner rather than self-serve).</li>
         <li><strong>On the partner roadmap:</strong> per-domain widget embed allowlisting (the demo embed is intentionally open today), self-serve API keys, bulk client onboarding, and per-client chat context on the public widget (today the public widget demos the assistant; signed-in client conversations happen in the portal).</li>
       </ul>
@@ -296,7 +296,7 @@ curl -X POST "https://api.veru365.com/api/orgs/47/branding/logo" \
   </div>
 
   <footer>
-    Demo environment · “Acme Wealth” and “Summit Planning” are fictional firms · Veru365 — white-label financial planning, powered by AI
+    Demo environment · “Acme Wealth” and “Summit Planning” are fictional firms · Veru365, white-label financial planning, powered by AI
   </footer>
 
   <script src="https://staging.veru365.com/widget.js" data-org="veru365" data-base="https://staging.veru365.com" defer></script>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Architecture, Security &amp; Compliance — Built for a Regulated Industry</title>
+  <title>Architecture, Security &amp; Compliance: Built for a Regulated Industry</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -88,15 +88,15 @@
 
   <div class="hero">
     <div class="badge">Partner preview &middot; Diligence guide</div>
-    <h1>Architecture, Security &amp; Compliance — built for a regulated industry</h1>
-    <p>How Veru365 keeps every client firm's data isolated, recorded, and auditable —
+    <h1>Architecture, Security &amp; Compliance: built for a regulated industry</h1>
+    <p>How Veru365 keeps every client firm's data isolated, recorded, and auditable,
        explained in plain English first, with the technical detail underneath.</p>
   </div>
 
   <!-- 1. One-paragraph version -->
   <div class="section">
     <div class="kicker">The one-paragraph version</div>
-    <h2>Every client firm is an isolated tenant — and the isolation lives in the database, not just the app</h2>
+    <h2>Every client firm is an isolated tenant, and the isolation lives in the database, not just the app</h2>
     <p class="sub">
       Each firm you deploy Veru365 for (in our world, an "organization") gets its own walled-off
       slice of the platform. What makes that claim worth more than marketing copy: the wall is
@@ -104,7 +104,7 @@
       query the application runs is automatically scoped to exactly one organization at the database
       layer, so even a bug in application code cannot read or write another firm's rows. On top of
       that sits soft-delete record-keeping, audit logging of any platform-staff access, and GDPR
-      export/erasure tooling — the things an advisor's compliance team asks about on day one.
+      export/erasure tooling, the things an advisor's compliance team asks about on day one.
     </p>
   </div>
 
@@ -114,7 +114,7 @@
     <h2>What talks to what</h2>
     <p class="sub">
       A visitor on any of your clients' web pages sees one chat bubble. Everything behind it runs in
-      our cloud — the host page carries a single script tag and nothing else.
+      our cloud, the host page carries a single script tag and nothing else.
     </p>
     <div class="diagram-wrap">
       <svg viewBox="0 0 900 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Architecture diagram: client web pages embed an isolated cross-origin widget iframe, which talks to the Veru365 app origin, which talks to the API, which reads a per-tenant Postgres database with row-level security; AI models are called by the API through Google Cloud Vertex AI.">
@@ -179,7 +179,7 @@
             an iframe served from our origin. It shares no cookies, no globals, and no styles with the
             page it sits on, and every network call it makes is wrapped so a failure can never break
             your client's website.</li>
-        <li><strong>The browser only ever talks to one origin — ours.</strong> Chat, branding, and
+        <li><strong>The browser only ever talks to one origin, ours.</strong> Chat, branding, and
             lead-capture requests all go through our application server, which holds any credentials
             server-side. No API tokens or secrets are ever present in the visitor's browser.</li>
         <li><strong>The AI sits behind the API, not in front of it.</strong> Model calls run through
@@ -187,7 +187,7 @@
             data only through the API's controlled tool calls, never by querying the database itself.</li>
       </ul>
     </div>
-    <p class="sub">Everything runs on Google Cloud in the United States (region <code class="inline">us-central1</code>) — Cloud Run services in front of a private-network PostgreSQL instance that accepts no public connections.</p>
+    <p class="sub">Everything runs on Google Cloud in the United States (region <code class="inline">us-central1</code>), Cloud Run services in front of a private-network PostgreSQL instance that accepts no public connections.</p>
   </div>
 
   <!-- 3. Tenant isolation -->
@@ -201,17 +201,17 @@
          customer" to every query. That works until one developer forgets once. Veru365 moves that
          guarantee into PostgreSQL itself: the database is told, per request, which organization is
          active, and <strong>row-level security policies on every tenant-scoped table</strong> make
-         rows belonging to other organizations invisible — reads and writes both.</p>
+         rows belonging to other organizations invisible, reads and writes both.</p>
       <p><strong>Technically:</strong> each API request resolves the caller's organization from their
          authenticated identity plus an explicit org-context header, and binds it to the database
          session before any query runs. The RLS policies then filter every statement by that
          organization ID. The failure mode this changes is the important part:</p>
       <ul>
         <li>A bug in application code that omits a tenant filter returns <em>zero</em> rows from other
-            firms — not a data leak, an empty result.</li>
+            firms, not a data leak, an empty result.</li>
         <li>An insert or update aimed at the wrong tenant is rejected by the database, not silently
             written.</li>
-        <li>Cross-tenant access paths (the platform-staff console) are explicit, narrow, and audited —
+        <li>Cross-tenant access paths (the platform-staff console) are explicit, narrow, and audited;
             see the records section below.</li>
       </ul>
       <p>We treat this as the load-bearing wall of the platform: changes touching tenant-scoped data
@@ -219,8 +219,8 @@
          PostgreSQL instance, specifically because SQLite-style unit tests cannot exercise RLS.</p>
     </div>
     <div class="callout">
-      <p><strong>Why this matters to you as a reseller:</strong> when two of your clients — even direct
-         competitors — run on the same deployment, the promise that neither can ever see the other's
+      <p><strong>Why this matters to you as a reseller:</strong> when two of your clients, even direct
+         competitors, run on the same deployment, the promise that neither can ever see the other's
          client data does not depend on our developers being careful. It's enforced by the database
          engine on every single query.</p>
     </div>
@@ -232,24 +232,24 @@
     <h2>A record trail an advisor's compliance officer can live with</h2>
     <p class="sub">
       Advisors are regulated communicators. If an AI assistant discusses someone's retirement with
-      them, that conversation is a business record — so the platform is built record-first.
+      them, that conversation is a business record, so the platform is built record-first.
     </p>
     <div class="card">
       <span class="tag today">Available today</span>
       <h3>What gets recorded</h3>
       <ul>
         <li><strong>Conversations are retained</strong>, tenant-scoped, like any other advisor
-            communication — including the tool calls and computed figures behind each answer, not just
+            communication, including the tool calls and computed figures behind each answer, not just
             the prose.</li>
         <li><strong>Delete means deactivate, never erase the trail.</strong> This is a deliberate,
             platform-wide pattern: cancelling an invitation soft-cancels the row rather than deleting
             it; offboarding an entire firm (deprovisioning) deactivates the organization, disconnects
-            live bank/brokerage links, and re-homes users — while <em>retaining every row</em>. There
+            live bank/brokerage links, and re-homes users, while <em>retaining every row</em>. There
             is no "hard delete an org" button, on purpose. (The regulated exception: verified GDPR
             erasure requests, below.)</li>
         <li><strong>Platform-staff access is logged and constrained.</strong> When Veru365 staff view a
             tenant for support, that access is written to a superadmin access log your diligence team
-            can ask about — and staff who are not real members of the firm are <em>blocked at the API
+            can ask about, and staff who are not real members of the firm are <em>blocked at the API
             layer</em> from making changes through the firm's own admin surfaces (branding, settings,
             webhooks). Platform-level lifecycle actions, such as adding a member, go through a separate
             superadmin surface where every action is audit-logged. Support can look with an audit
@@ -265,7 +265,7 @@
       <h3>Long-horizon archive retention</h3>
       <p>Chat-archive storage with an enforced multi-year retention policy is built into the
          platform. Certified write-once (WORM) locking and the archive pipeline are enabled together
-         with each partner during pilot diligence rather than switched on generically — locking is
+         with each partner during pilot diligence rather than switched on generically, locking is
          irreversible, and the right retention regime (17a-4-style WORM versus advisers-act
          books-and-records) depends on which rules your clients answer to. Retention windows,
          legal-hold behavior, and regulator-facing export formats are configured in the same
@@ -282,10 +282,10 @@
       <h3>The public widget collects almost nothing</h3>
       <p>A visitor chatting on a public landing page is <strong>anonymous</strong>: no login, no
          account, a random per-page-load session ID. Personal data enters only if the visitor chooses
-         to submit the lead form — name, email, and an optional message — which is stored
+         to submit the lead form (name, email, and an optional message), which is stored
          tenant-scoped for that firm's advisors and never echoed back in the API response. The lead
          endpoint is rate-limited per IP to blunt scraping and spam. The signed-in portal is the
-         opposite end of the spectrum — full financial-planning data — and everything there sits
+         opposite end of the spectrum, full financial-planning data, and everything there sits
          behind Auth0-issued identity plus the tenant isolation described above.</p>
     </div>
     <div class="card">
@@ -293,14 +293,14 @@
       <h3>GDPR-style export and erasure</h3>
       <p>Data-subject tooling is built and running: export and erasure workflows execute as scheduled
          jobs in production. Erasure is the one sanctioned exception to the "never hard-delete"
-         posture — a verified data-subject request removes personal data through a controlled
+         posture, a verified data-subject request removes personal data through a controlled
          workflow, rather than an engineer running ad-hoc SQL.</p>
     </div>
     <div class="card">
       <span class="tag today">Available today</span>
       <h3>Data residency</h3>
       <p>All services and data run on Google Cloud in the United States (<code class="inline">us-central1</code>).
-         The production database is reachable only over the private network — it has no public IP.
+         The production database is reachable only over the private network, it has no public IP.
          Uploaded brand assets (logos, favicons) live in a private storage bucket and are served
          through an allowlisted proxy, not exposed directly.</p>
     </div>
@@ -314,8 +314,8 @@
       <span class="tag today">Available today</span>
       <p><strong>The design principle:</strong> when the assistant shows a retirement projection, that
          Monte Carlo simulation actually ran. Dollar figures come from <strong>tool calls into the same
-         planning engine the full platform uses</strong> — net-worth calculations, plan projections,
-         what-if scenarios — and are rendered as structured, interactive modules in the chat rather
+         planning engine the full platform uses</strong>: net-worth calculations, plan projections,
+         what-if scenarios, and are rendered as structured, interactive modules in the chat rather
          than free-form model prose. The interesting numbers on screen are computation output, not
          model output.</p>
       <ul>
@@ -324,7 +324,7 @@
             transcript can be traced back to its origin.</li>
         <li><strong>The model has no database access.</strong> It reaches data exclusively through the
             API's tools, inside the same per-tenant scoping as every other request.</li>
-        <li><strong>Conversations are retained and auditable</strong> like any advisor communication —
+        <li><strong>Conversations are retained and auditable</strong> like any advisor communication:
             the records section above applies in full to AI output.</li>
         <li><strong>Quality is tested, not assumed:</strong> we run evaluation suites against the
             assistant's tool-use behavior as part of development, and model changes are staged and
@@ -340,7 +340,7 @@
     <div class="honest">
       <h3>Read this section before your security team does</h3>
       <ul>
-        <li><strong>No SOC 2 stamp — and we won't pretend otherwise.</strong> We do not currently claim
+        <li><strong>No SOC 2 stamp, and we won't pretend otherwise.</strong> We do not currently claim
             SOC 2 or ISO certification. Formal certifications, penetration-test summaries, and your
             security questionnaire are handled during pilot diligence, where we can show rather than
             assert.</li>
@@ -352,7 +352,7 @@
         <li><strong>Billing is reporting, not invoicing.</strong> Per-org usage metering and billing
             reports are live; invoicing is currently a manual process, not a self-serve payment flow.</li>
         <li><strong>Partner provisioning is done with us, not self-serve.</strong> Creating firm
-            tenants uses a platform-admin API operated with Veru365 during pilot — there is
+            tenants uses a platform-admin API operated with Veru365 during pilot, there is
             deliberately no self-serve credential that grants platform-wide access.</li>
       </ul>
     </div>
@@ -366,7 +366,7 @@
     <div class="qa">
       <div class="qrow">
         <p class="q">If a developer ships a buggy query, can Firm A see Firm B's clients?</p>
-        <p class="a">No — row-level security in PostgreSQL filters every query by the active organization, so an unscoped query returns nothing from other tenants rather than leaking them.</p>
+        <p class="a">No, row-level security in PostgreSQL filters every query by the active organization, so an unscoped query returns nothing from other tenants rather than leaking them.</p>
       </div>
       <div class="qrow">
         <p class="q">Can your own staff read or edit our clients' data?</p>
@@ -374,11 +374,11 @@
       </div>
       <div class="qrow">
         <p class="q">What personal data does the widget collect from an anonymous visitor?</p>
-        <p class="a">None automatically. Name, email, and an optional message — only if the visitor submits the lead form, stored tenant-scoped for that firm.</p>
+        <p class="a">None automatically. Name, email, and an optional message, only if the visitor submits the lead form, stored tenant-scoped for that firm.</p>
       </div>
       <div class="qrow">
         <p class="q">What happens to a firm's data when they leave?</p>
-        <p class="a">Deprovisioning deactivates the tenant, revokes live bank/brokerage connections, and re-homes users — while retaining all records. Verified GDPR erasure requests are the controlled exception.</p>
+        <p class="a">Deprovisioning deactivates the tenant, revokes live bank/brokerage connections, and re-homes users, while retaining all records. Verified GDPR erasure requests are the controlled exception.</p>
       </div>
       <div class="qrow">
         <p class="q">Where does the data physically live?</p>
@@ -390,7 +390,7 @@
       </div>
       <div class="qrow">
         <p class="q">Are you SOC 2 certified?</p>
-        <p class="a">Not yet, and we don't claim it. Certifications, pen-test results, and questionnaires are pilot-diligence items — ask us and we'll walk you through the current posture directly.</p>
+        <p class="a">Not yet, and we don't claim it. Certifications, pen-test results, and questionnaires are pilot-diligence items, ask us and we'll walk you through the current posture directly.</p>
       </div>
     </div>
   </div>
