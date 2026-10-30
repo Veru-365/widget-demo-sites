@@ -1,7 +1,7 @@
 # Veru365 Widget Demo Sites
 
 Fake "client" marketing pages hosted on a **separate domain** (GitHub Pages) that embed the
-Veru365 chat widget from staging — demonstrating that one reseller client can put the same
+Veru365 chat widget from staging, demonstrating that one reseller client can put the same
 widget on their main website **and** multiple separate landing pages with a single script tag:
 
 ```html
@@ -11,9 +11,9 @@ widget on their main website **and** multiple separate landing pages with a sing
 ```
 
 ## Pages
-- `acme-wealth/index.html` — the client's main website
-- `acme-wealth/retirement-landing.html` — campaign landing page 1
-- `acme-wealth/tax-landing.html` — campaign landing page 2
+- `acme-wealth/index.html`, the client's main website
+- `acme-wealth/retirement-landing.html`, campaign landing page 1
+- `acme-wealth/tax-landing.html`, campaign landing page 2
 
 Because these pages are served from github.io (a genuinely different origin), this exercises
 the real cross-origin path: the widget iframe relies on the `frame-ancestors *` exception

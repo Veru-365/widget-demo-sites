@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>White-Label &amp; Theming Guide — Every Client Under Their Own Brand</title>
+  <title>White-Label &amp; Theming Guide: Every Client Under Their Own Brand</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -93,7 +93,7 @@
 
   <div class="hero">
     <div class="badge">Partner preview · White-label guide</div>
-    <h1>Every client under their own brand — one platform underneath</h1>
+    <h1>Every client under their own brand: one platform underneath</h1>
     <p>You sell the offering; your client's customers see your client's name. This page shows exactly
        which surfaces rebrand per client, how long it takes (about two minutes per client), and what a
        two-brand deployment looks like running side by side.</p>
@@ -106,7 +106,7 @@
        organization carries its own identity end to end: the logo, primary and accent colors, favicon,
        and the product name itself are all per-client settings. The signed-in portal, the login page,
        the public booking page, and the chat widget on the client's website all pull from the same
-       branding record — set it once, and every surface updates. The "Powered by" footer line
+       branding record, set it once, and every surface updates. The "Powered by" footer line
        inside the widget currently shows the client's own product name (or Veru365 by default);
        removing attribution entirely is planned as a reseller-tier entitlement.
        <span class="tag today">Available today</span></p>
@@ -119,24 +119,24 @@
        brand records at once on this demo site. The <a href="acme-wealth/index.html">Acme Wealth
        pages</a> run the widget under the platform's default demo brand, and the
        <a href="summit-planning/index.html">Summit Planning page</a> runs the identical widget wearing
-       a second firm's live branding record — different name, different colors, fetched per org from
+       a second firm's live branding record, different name, different colors, fetched per org from
        the public branding endpoint. Open both side by side; the only difference between the two
        embeds is the <code class="inline">data-org</code> value in the script tag.</p>
-    <img src="assets/two-brands-side-by-side.png" alt="Two live branded assistants side by side — Acme Wealth and Summit Planning — differing only by the data-org attribute" style="max-width:100%;border-radius:10px;border:1px solid #e5e7eb;margin-top:12px">
-    <p style="font-size:14px;color:#555;margin-top:8px">This comparison is a live page you can open right now: <a href="compare-brands.html" style="color:#4338ca;font-weight:600">compare-brands.html</a> — both assistants stream real responses.</p>
-    <pre><span class="c">&lt;!-- The demo hub and Acme pages (view source — this is verbatim) --&gt;</span>
+    <img src="assets/two-brands-side-by-side.png" alt="Two live branded assistants side by side, Acme Wealth and Summit Planning, differing only by the data-org attribute" style="max-width:100%;border-radius:10px;border:1px solid #e5e7eb;margin-top:12px">
+    <p style="font-size:14px;color:#555;margin-top:8px">This comparison is a live page you can open right now: <a href="compare-brands.html" style="color:#4338ca;font-weight:600">compare-brands.html</a>: both assistants stream real responses.</p>
+    <pre><span class="c">&lt;!-- The demo hub and Acme pages (view source, this is verbatim) --&gt;</span>
 &lt;script src="https://staging.veru365.com/widget.js"
         data-org="veru365" data-base="https://staging.veru365.com" defer&gt;&lt;/script&gt;
 
-<span class="c">&lt;!-- The Summit Planning page — same install, second brand --&gt;</span>
+<span class="c">&lt;!-- The Summit Planning page, same install, second brand --&gt;</span>
 &lt;script src="https://staging.veru365.com/widget.js"
         data-org="summit-planning" data-base="https://staging.veru365.com" defer&gt;&lt;/script&gt;</pre>
-    <div class="note">The demo currently serves from our staging environment — that's why the
+    <div class="note">The demo currently serves from our staging environment, that's why the
       <code class="inline">src</code> above is a staging host. A production install provisioned
       during a pilot is the same tag pointed at the production host
       (<code class="inline">https://app.veru365.com/widget.js</code>).</div>
     <div class="note">One honest caveat for the demo environment: today the <code class="inline">data-org</code>
-      value drives the widget's <strong>branding</strong> — the conversation itself runs against shared
+      value drives the widget's <strong>branding</strong>: the conversation itself runs against shared
       demonstration data, identical across orgs. Per-client chat context on the public widget (anonymous
       visitors scoped to the client's org) is a roadmap item; signed-in client conversations already
       happen per-org inside the branded portal. Details in "Honest boundaries" below.</div>
@@ -159,7 +159,7 @@
         <tr>
           <td>Widget launcher bubble</td>
           <td>The floating chat button on the client's website, tinted in the client's brand color.</td>
-          <td><code class="inline">primary_color</code> — fetched per <code class="inline">data-org</code> slug from the public branding endpoint.</td>
+          <td><code class="inline">primary_color</code>: fetched per <code class="inline">data-org</code> slug from the public branding endpoint.</td>
         </tr>
         <tr>
           <td>Widget chat header</td>
@@ -168,7 +168,7 @@
         </tr>
         <tr>
           <td>Portal shell (signed-in app)</td>
-          <td>The full financial-planning portal — navigation, headers, theming — under the client's identity. Colors are exposed to the UI as CSS variables; <code class="inline">custom_css</code> allows finer overrides.</td>
+          <td>The full financial-planning portal, navigation, headers, theming, under the client's identity. Colors are exposed to the UI as CSS variables; <code class="inline">custom_css</code> allows finer overrides.</td>
           <td>All branding fields; preview endpoint returns them as ready-to-apply CSS variables.</td>
         </tr>
         <tr>
@@ -178,7 +178,7 @@
         </tr>
         <tr>
           <td>Login page</td>
-          <td>Client-branded sign-in, resolved by the org's URL handle before the visitor has authenticated — branding reads are deliberately public so unauthenticated pages can theme themselves.</td>
+          <td>Client-branded sign-in, resolved by the org's URL handle before the visitor has authenticated, branding reads are deliberately public so unauthenticated pages can theme themselves.</td>
           <td>Public read: <code class="inline">GET /api/orgs/url-handle/{handle}/branding</code>.</td>
         </tr>
         <tr>
@@ -205,7 +205,7 @@
     <div class="kicker">How you actually do it</div>
     <h2>Rebranding a client is one JSON call plus a file upload</h2>
     <p class="sub">The whole operation is a PATCH for colors and names plus file uploads for the logo
-       and favicon — small enough to fold into your own client-onboarding flow, and during a pilot we
+       and favicon, small enough to fold into your own client-onboarding flow, and during a pilot we
        run the first one alongside your team. These are real endpoints from our live API.
        <span class="tag today">Available today</span></p>
 
@@ -229,7 +229,7 @@
     <div class="step-block">
       <h3><span class="n">2</span>Upload the logo and favicon</h3>
       <p>Multipart file uploads, image-validated, 5&nbsp;MB cap. The response returns a public asset
-         URL that works on unauthenticated pages — that's what the login page and widget use.</p>
+         URL that works on unauthenticated pages, that's what the login page and widget use.</p>
       <pre>curl -X POST "https://api.veru365.com/api/orgs/47/branding/logo" \
   -H "Authorization: Bearer $ORG_OWNER_TOKEN" -H "X-Org-Id: 47" \
   -F "file=@summit-logo.png"
@@ -241,7 +241,7 @@ curl -X POST "https://api.veru365.com/api/orgs/47/branding/favicon" \
 
     <div class="step-block">
       <h3><span class="n">3</span>Verify what any visitor will see</h3>
-      <p>Branding reads are public by design — this is the exact payload the login page and widget
+      <p>Branding reads are public by design, this is the exact payload the login page and widget
          consume, so you can check a client's live branding with a plain GET, no token needed. This
          one is live right now: it returns the branding record behind the Summit Planning demo page
          (run it yourself, in a terminal or a browser).</p>
@@ -254,27 +254,27 @@ curl -X POST "https://api.veru365.com/api/orgs/47/branding/favicon" \
 
     <div class="note"><strong>A deliberate security property worth knowing:</strong> branding writes
       require the client organization owner's own credentials. Even our platform administrators cannot
-      silently edit a client's branding while "viewing as" that org — those attempts are audit-logged
+      silently edit a client's branding while "viewing as" that org, those attempts are audit-logged
       and blocked at the API layer. In practice this means white-label setup is done by the org owner
       account (yours or your client's), which is exactly the control story a compliance-minded buyer
       wants to hear. Branding changes also fire a <code class="inline">branding.updated</code>
       webhook to any endpoints you've registered (HMAC-signed when you configure a signing secret on
-      the endpoint) — it reports which fields changed, never the values.</div>
+      the endpoint), it reports which fields changed, never the values.</div>
   </div>
 
   <div class="section">
     <div class="kicker">Packaging &amp; tiers</div>
-    <h2>Feature switches per client — sell tiers under your own SKUs</h2>
+    <h2>Feature switches per client: sell tiers under your own SKUs</h2>
     <p class="sub">Every organization has a feature-flag set: bank connections (Plaid), document vault,
        portfolio tools, tax, budgeting, scheduling, personal financial statements, CRM and calendar
        integrations (Wealthbox, Salesforce, RingCentral, Microsoft&nbsp;365, Google Calendar, Calendly,
        HubSpot), and identity-verification requirements. Flip them per org, so a "Starter" client gets
-       chat + planning while a "Premium" client gets the full stack — packaged and priced however you
+       chat + planning while a "Premium" client gets the full stack, packaged and priced however you
        sell it. <span class="tag today">Available today</span></p>
     <div class="step-block">
       <h3><span class="n">&rarr;</span>Set a client's tier in one call</h3>
       <p>Platform-level operation (during a pilot, Veru365 provisions the platform credential and can
-         run this with your team). Unknown flag names are rejected outright — no silent typos.</p>
+         run this with your team). Unknown flag names are rejected outright, no silent typos.</p>
       <pre>curl -X PATCH "https://api.veru365.com/api/platform-admin/orgs/47/features" \
   -H "Authorization: Bearer $PLATFORM_TOKEN" \
   -H "Content-Type: application/json" \
@@ -299,7 +299,7 @@ curl -X POST "https://api.veru365.com/api/orgs/47/branding/favicon" \
       <div class="card">
         <div class="icon">🌐</div>
         <h3>Client web pages <span class="tag today">Today</span></h3>
-        <p>The widget is one script tag per page — main website, any number of separate landing pages,
+        <p>The widget is one script tag per page, main website, any number of separate landing pages,
            any number of domains. Each page embed is independent; there is no per-page setup and no
            limit on how many pages carry it.</p>
       </div>
@@ -308,7 +308,7 @@ curl -X POST "https://api.veru365.com/api/orgs/47/branding/favicon" \
         <h3>Public booking pages <span class="tag today">Today</span></h3>
         <p>Each client can publish a public advisor page at <code class="inline">/book/{slug}</code>
            carrying their name, logo, and colors, with built-in rate-limited lead capture. Unpublished
-           pages are simply invisible — unknown and unpublished slugs are indistinguishable.</p>
+           pages are simply invisible, unknown and unpublished slugs are indistinguishable.</p>
       </div>
       <div class="card">
         <div class="icon">✉️</div>
@@ -320,7 +320,7 @@ curl -X POST "https://api.veru365.com/api/orgs/47/branding/favicon" \
         <div class="icon">🔒</div>
         <h3>Embed domain allowlisting <span class="tag roadmap">Roadmap</span></h3>
         <p>A per-org allowlist of which domains may embed each client's widget is planned for
-           production deployments — today the embed is intentionally open for demonstration, and we
+           production deployments, today the embed is intentionally open for demonstration, and we
            say so plainly rather than imply a control that doesn't exist yet.</p>
       </div>
     </div>
@@ -328,11 +328,11 @@ curl -X POST "https://api.veru365.com/api/orgs/47/branding/favicon" \
 
   <div class="section">
     <div class="roadmap-box">
-      <h3>Honest boundaries — what is not yet per-client</h3>
+      <h3>Honest boundaries: what is not yet per-client</h3>
       <ul>
         <li><strong>Per-client chat context on the public widget is roadmap.</strong> Today
             <code class="inline">data-org</code> rebrands the widget per client, but the public
-            (anonymous-visitor) conversation runs against shared demonstration data — the same answers
+            (anonymous-visitor) conversation runs against shared demonstration data, the same answers
             regardless of which client's site embeds it. The production widget platform introduces
             anonymous/lead sessions scoped to the client's org. Signed-in conversations inside the
             branded portal are already fully per-org today.</li>
